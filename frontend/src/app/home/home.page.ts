@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
 import { ProductApiService } from '../servicesApi/product-api.service';
+import { ActivatedRoute } from '@angular/router';
 // import { Observable, map, BehaviorSubject} from 'rxjs';
 
 @Component({
@@ -16,6 +17,7 @@ export class HomePage implements OnInit{
   @ViewChild(IonModal) modal: IonModal;
 
   allProducts:any[]; //mine
+  searchedProduct: string;
   products:any[] = [];
   tempProducts:any[] = [];
   cart:any[] = [];
@@ -31,6 +33,7 @@ export class HomePage implements OnInit{
 
   constructor(private http: HttpClient,
               private productApi: ProductApiService, 
+            
     
     ) {}
 
@@ -58,6 +61,14 @@ export class HomePage implements OnInit{
     console.log(this.products);
    });
   }
+
+
+  onSearch(){
+    console.log("User searched for...", this.searchedProduct);
+  }
+
+
+
   addToCart(item:any){
     if(this.cart.includes(item)){
       return;

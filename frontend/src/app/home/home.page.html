@@ -4,8 +4,11 @@
   <ion-item>
     <div class="top-section">
       <div class="search-group">
-        <input type="text" name="" id="" placeholder="searh all products...">
-        <ion-icon name="search"></ion-icon>
+        <form (ngSubmit)="onSearch()" #searchForm = "ngForm">
+            <input type="text" [(ngModel)]="searchedProduct" name="searchedProduct" placeholder="searh products...">
+            <ion-icon name="search"  [routerLink] = "['/search']" [queryParams] = "{'name' : searchedProduct}" (click)="onSearch()"></ion-icon>
+        </form>
+       
       </div>
       <ion-icon class="notify" name="notifications-outline"></ion-icon>
     </div>

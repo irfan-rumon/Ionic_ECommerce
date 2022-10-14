@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>search</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ng-container *ngFor="let product of products">
+        <ion-col  size = "6" [routerLink] = "['/details']" [queryParams] = "{'id' : product._id}">
+          <img class="card-img" [src] = "product.imageURL" style="height: 10rem; width: 10rem;">
+          <h5> {{ product.name }} </h5>
+          <h4 style="color: crimson;"> ${{ product.unitPrice }}</h4>
+        </ion-col>
+      </ng-container>
+    </ion-row>
+   </ion-grid>
+
+
+</ion-content>
