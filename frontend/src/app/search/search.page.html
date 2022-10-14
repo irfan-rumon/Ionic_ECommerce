@@ -1,37 +1,52 @@
-<app-header></app-header>
+<div style="display: flex; margin-top: 2rem; justify-content: space-between;">
+  <ion-icon name="chevron-back-outline"></ion-icon>
+  <span style="text-align: center; font-size:medium;">Search Product</span>
+  <img src="https://images.unsplash.com/photo-1665691288751-faa9809238e8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" style=" height:2.2rem; width:2.2rem; border-radius: 20px;; ">
+</div>
+
 
 
   <ion-item>
     <div class="top-section">
       <div class="search-group">
         <form  #searchForm = "ngForm">
-            <input type="text" [(ngModel)]="searchedProduct" name="searchedProduct" placeholder="searh products...">
+            <input type="text" [(ngModel)]="searchedProduct" name="searchedProduct" placeholder="searh products..." style="width: 110%;">
             <ion-icon name="search"  [routerLink] = "['/search']" [queryParams] = "{'name' : searchedProduct}" (click)="reLoadPage()"></ion-icon>
         </form>
        
       </div>
-      <ion-icon class="notify" name="notifications-outline"></ion-icon>
+      <img  src="data:image/png;base64,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" style=" height:2.2rem; width:2.2rem; border-radius: 20px; margin-left: 2rem; ">
     </div>
   </ion-item>
 
 
 
 <ion-content>
-  <ion-grid>
-    <ion-row>
-      <h3 style="margin-left:5rem; font-weight:bold;font-style:italic;">Found {{ products.length }} Results</h3>
-    </ion-row>
-    <ion-row>
-      
-      <ng-container *ngFor="let product of products">
-        <ion-col  size = "6" [routerLink] = "['/details']" [queryParams] = "{'id' : product._id}">
-          <img class="card-img" [src] = "product.imageURL" style="height: 10rem; width: 10rem;">
-          <h5> {{ product.name }} </h5>
-          <h4 style="color: crimson;"> ${{ product.unitPrice }}</h4>
-        </ion-col>
-      </ng-container>
-    </ion-row>
-   </ion-grid>
+  <ion-row>
+    <h3 style="margin-left:5rem; font-weight:bold;font-style:italic;">Found {{ products.length }} Results</h3>
+  </ion-row>
+      <ion-grid>   
+            <ion-row>
+              
+              <ng-container *ngFor="let product of products">
+                <ion-col  size = "6" [routerLink] = "['/details']" [queryParams] = "{'id' : product._id}">
+                  
+                  <ion-card>
+                        <img class="card-img" [src] = "product.imageURL" style="height: 10rem; width: 10rem;">
+                        <h5> {{ product.name }} </h5>
+
+                        <div style="display: flex; margin-top:0;">
+                          <h6 style="color: rgb(4, 132, 76);"> ${{ product.unitPrice }}</h6>
+                           <span style="padding-left: 4rem; font-size:1.5rem; color:red"><ion-icon name="heart" style="margin-top: 1rem;"></ion-icon></span> 
+                        </div>
+                      
+                  </ion-card>
+                </ion-col>
+              </ng-container>
+            </ion-row>
+         
+      </ion-grid>
+    
 
 
 </ion-content>
