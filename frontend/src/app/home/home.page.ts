@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
+import { ProductApiService } from '../servicesApi/product-api.service';
 // import { Observable, map, BehaviorSubject} from 'rxjs';
 
 @Component({
@@ -14,6 +15,7 @@ export class HomePage implements OnInit{
 
   @ViewChild(IonModal) modal: IonModal;
 
+  allProducts:any[]; //mine
   products:any[] = [];
   tempProducts:any[] = [];
   cart:any[] = [];
@@ -26,7 +28,10 @@ export class HomePage implements OnInit{
     'drink' : false
   }
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,
+              private productApi: ProductApiService, 
+    
+    ) {}
 
   slideOptions = {
     freeMode: true,
@@ -37,6 +42,12 @@ export class HomePage implements OnInit{
     pager: true
   }
   ngOnInit(){
+
+   this.productApi.getProducts().subscribe(  (response)=>{
+       this.allProducts = response.data;
+       console.log("Here all products: ", this.allProducts);
+   })
+
    this.http.get<any[]>(`${environment.baseURL}/products.json`).subscribe(res =>{
      let arr = Object.entries(res);
     for(let [x,y] of arr){

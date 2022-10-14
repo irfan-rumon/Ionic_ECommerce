@@ -13,7 +13,7 @@
 
   <ion-item>
     <div class="banner">
-      <img src="https://st10.cannypic.com/thumbs/35/353669_632_canny_pic.jpg" alt="">
+      <img src="https://image.shutterstock.com/shutterstock/photos/1934081501/display_1500/stock-photo-weekend-super-sale-shopping-template-1934081501.jpg" alt="">
     </div>
   </ion-item>
 
@@ -30,11 +30,11 @@
   <!-- products section -->
    <ion-grid>
     <ion-row>
-      <ng-container *ngFor = "let product of products">
-        <ion-col size = "6" [routerLink] = "['/details']" [queryParams] = "{'id' : product.id}">
-          <img class="card-img" [src] = "product.img">
+      <ng-container *ngFor = "let product of allProducts">
+        <ion-col size = "6" [routerLink] = "['/details']" [queryParams] = "{'id' : product._id}">
+          <img class="card-img" [src] = "product.imageURL" style="height: 10rem; width: 10rem;">
           <h5> {{ product.name }} </h5>
-          <h4 style="color: crimson;"> ${{ product.price }}</h4>
+          <h4 style="color: crimson;"> ${{ product.unitPrice }}</h4>
         </ion-col>
       </ng-container>
     </ion-row>
