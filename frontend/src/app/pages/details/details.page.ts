@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProductService } from 'src/app/services/product.service';
-
+import { ProductApiService } from 'src/app/servicesApi/product-api.service';
 @Component({
   selector: 'app-details',
   templateUrl: './details.page.html',
@@ -11,23 +10,39 @@ export class DetailsPage implements OnInit {
 
   params: string = "";
   currentProduct: any = {};
+  toggle:boolean = false;
+  buynow:boolean = false;
+  quantity: number = 1;
+  subtotal: number = 0;
 
   constructor(private acr: ActivatedRoute,
-    private prd: ProductService) { }
+    private prd:  ProductApiService) { }
 
   ngOnInit() {
+   
     this.acr.queryParams.subscribe(res => {
       this.params = res['id'];
-    });
-    this.prd.getAllProducts().subscribe(res => {
-      let arr = Object.entries(res);
-      let temp:any[] = [];
-      for (let [x, y] of arr) {
-        temp.push(y);
-      }
-      this.currentProduct = temp.find(p => p.id === this.params);
+
+      this.prd.getProduct(this.params).subscribe( (response)=>{
+            this.currentProduct = response;
+           
+            this.subtotal = +this.currentProduct.unitPrice * this.quantity;
+           
+      })
       
-    })
+    });
+   
+  }
+ 
+  onRemoveQt(){
+     if( this.quantity == 1)return;
+     this.quantity--;
+     this.subtotal = this.quantity * this.currentProduct.unitPrice;
+  }
+
+  onAddQt(){
+    this.quantity++;
+    this.subtotal = this.quantity * this.currentProduct.unitPrice;
   }
 
 }

@@ -23,9 +23,10 @@ export class HomePage implements OnInit{
   name:string;
   cartCount: number = 0;
   cls:any = {
-    'all' : true,
-    'food' : false,
-    'drink' : false
+    'Phone' : true,
+    'Perfume' : false,
+    'Cloth' : false,
+    'Watch' : false
   }
 
   constructor(private http: HttpClient,
@@ -53,7 +54,7 @@ export class HomePage implements OnInit{
     for(let [x,y] of arr){
       this.products.push(y);
     }
-    this.tempProducts = this.products;
+    this.tempProducts = this.allProducts;
     console.log(this.products);
    });
   }
@@ -80,20 +81,17 @@ export class HomePage implements OnInit{
       return;
     }
   }
-  filter(category:string){
+  filter(catagory:string){
     let clsArr = Object.keys(this.cls);
 
     for(let x of clsArr){
       this.cls[x] = false;
     }
     
-    this.cls[category] = true;
-    this.products = this.tempProducts;
-    if(category === 'all'){
-      this.products = this.tempProducts;
-      return;
-    }
-    this.products = this.products.filter(prod => prod.category === category);
+    this.cls[catagory] = true;
+    this.allProducts = this.tempProducts;
+    
+    this.allProducts = this.allProducts.filter(prod => prod.catagory === catagory);
   }
 
 

@@ -1,3 +1,35 @@
-<h1>
-  {{ currentProduct | json }}
-</h1>
+<app-back-button></app-back-button>
+<ion-content>
+  <div class="details">
+    <img [src]="currentProduct.imageURL" alt="" style="height: 25rem; width:98%;"/>
+    <div class="details-top">
+     
+    </div>
+    
+  </div>
+
+  <ion-card style="margin-left: 1rem; padding-left:1rem;">
+      <div style="display: flex;">
+           <h4 style="margin-right: 8rem;font-weight: bolder;">{{  currentProduct.name }}</h4>
+           <ion-icon   style="margin-top: 1.5rem;" *ngFor="let i of [1,2,3,4,5]" name='star'></ion-icon>
+      </div>  
+
+      <div style="display: flex;">
+        <p style="margin-right: 7rem;font-size: small;">size: 7.60 fl az/225ml</p>
+        <p>(132 reviews)</p>
+      </div>  
+
+      
+
+      <div style="display: flex; align-items: center; margin-top: 2rem; margin-bottom: 1rem;">
+        <h3 style="margin-right: 5rem;font-weight: bolder;">${{ subtotal }}</h3>
+        <div class="cart-quantity">
+            <ion-icon name="remove" (click)="onRemoveQt()"></ion-icon>
+            <span>{{ quantity }}</span>
+            <ion-icon name="add" (click)="onAddQt()"></ion-icon>
+         </div>
+        <ion-button >Cart</ion-button>
+      </div>  
+
+  </ion-card>
+</ion-content>
