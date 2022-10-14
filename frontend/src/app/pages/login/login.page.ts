@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/services/auth.service';
+import { LoggerUser } from 'src/app/models/loggerUser';
+import { AuthorizationService } from 'src/app/servicesApi/authorization.service';
+import { UserApiService } from 'src/app/servicesApi/user-api.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,28 +11,28 @@ import { Router } from '@angular/router';
 })
 export class LoginPage implements OnInit {
 
-  constructor(private _auth: AuthService,
-              private router: Router) { }
-  loginForm:FormGroup = new FormGroup({});
-  ngOnInit() {
-    this.loginForm = new FormGroup({
-      lemail: new FormControl('',[Validators.required]),
-      lpassword: new FormControl('',[Validators.required])
-    })
-    this._auth.getAllUsers();
-  }
-  login(){
-    let user = {
-      email: this.loginForm.value['lemail'],
-      password: this.loginForm.value['lpassword']
-    }
-    let ret = this._auth.login(user);
-    if(ret === undefined){
+  user: LoggerUser = {} as LoggerUser;
 
-    }else{
-      this.router.navigate(['home']);
-    }
+  constructor(private auth:  AuthorizationService,
+              private userApi: UserApiService,
+              private router: Router) { }
+ 
+  ngOnInit() {
+   
+   
   }
+ 
+  onLogin(){
+  
+      this.user.strategy = "local";
+      this.userApi.logUser(this.user).subscribe(   (response)=>{   
+          this.auth.setToken(response["accessToken"]);        
+          this.router.navigate(['/home']);                               
+      }, (err)=>{
+         console.log("Error!!!");
+      })
+  }
+
   goto(){
     this.router.navigate(['/signup']);
   }

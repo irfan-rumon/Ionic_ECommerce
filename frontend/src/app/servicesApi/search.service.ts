@@ -1,20 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Product } from '../models/product';
-
-
 
 @Injectable({
   providedIn: 'root'
 })
 export class SearchService {
 
-  products: Product[];
+  products: any[];
 
   constructor() { }
 
   
 
-  setProducts(products: Product[]){
+  setProducts(products: any[]){
     this.products = products;
   }
 

@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User } from '../models/user';
 
-import { LoggerUser } from '../models/loggerUser';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -27,16 +25,16 @@ export class UserApiService {
     return this.http.get<any[]>(this.apiUrl);
   }
 
-  getUser(userId: any):Observable<User> {
+  getUser(userId: any):Observable<any> {
     const url = `${this.apiUrl}/${userId}`;
-    return this.http.get<User>(url);
+    return this.http.get<any>(url);
   }
 
-  addUser(user: User): Observable<User> {
-    return this.http.post<User>(this.apiUrl, user, httpOptions);
+  addUser(user: any): Observable<any> {
+    return this.http.post<any>(this.apiUrl, user, httpOptions);
   }
 
-  logUser(user:LoggerUser):Observable<any>{
+  logUser(user:any):Observable<any>{
     return this.http.post<any>(this.loginUrl,  user, httpOptions);
   }
 }

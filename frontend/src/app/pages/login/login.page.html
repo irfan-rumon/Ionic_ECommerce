@@ -5,18 +5,18 @@
 
     <div class="login-section ion-padding">
         <div class="heading ion-padding">
-            <h1>Welcome To F For Food</h1>
+          
         <p>Sign in to Continue</p>
         </div>
 
-        <form [formGroup] = "loginForm" class="login-form" (ngSubmit) = "login()">
+        <form (ngSubmit)="onLogin()" #logForm = "ngForm">
             <div class="form-input">
                 <ion-icon name="mail-outline"></ion-icon>
                 <ion-item>
                     <ion-label position="floating">
                         Email
                     </ion-label>
-                    <ion-input formControlName = "lemail" type="email"></ion-input>
+                    <ion-input  placeholder="Enter Email" [(ngModel)]="user.email" name="email" #email="ngModel"  email="true" required></ion-input>
                 </ion-item>
             </div>
             <div class="form-input">
@@ -25,13 +25,15 @@
                     <ion-label position="floating">
                         Password
                     </ion-label>
-                    <ion-input formControlName = "lpassword" type="password"></ion-input>
+                    <ion-input placeholder="Enter Password" [(ngModel)]="user.password" name="password" #password="ngModel"   required></ion-input>
                 </ion-item>
             </div>
             <div class="action-button ion-padding">
-                <ion-button type = "submit" size="large" class="login-button" routerLink = "/login">Log in</ion-button>
-                <ion-button class="signup-button" size="large" fill="outline" (click) = "goto()">Sign Up</ion-button>
+                <ion-button type = "submit" size="large" class="login-button">Log in</ion-button>
+                
             </div>
         </form>
+
+        <ion-button class="signup-button" size="large" fill="outline" (click) = "goto()">Sign Up</ion-button>
     </div>
 </ion-content>

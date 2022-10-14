@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductApiService } from 'src/app/servicesApi/product-api.service';
+import {AuthorizationService} from 'src/app/servicesApi/authorization.service';
+import { Router } from '@angular/router';
+import { CartService } from 'src/app/servicesApi/cart.service';
+
 @Component({
   selector: 'app-details',
   templateUrl: './details.page.html',
@@ -16,7 +20,10 @@ export class DetailsPage implements OnInit {
   subtotal: number = 0;
 
   constructor(private acr: ActivatedRoute,
-    private prd:  ProductApiService) { }
+    private prd:  ProductApiService,
+    private router: Router,
+    private cartApi: CartService,
+    private auth: AuthorizationService) { }
 
   ngOnInit() {
    
@@ -34,6 +41,31 @@ export class DetailsPage implements OnInit {
    
   }
  
+  onCart(){
+    console.log("Cart e entered!!");
+    if( !this.auth.isLoggedIn() ){
+        this.router.navigate(['/login']);
+        return;
+    }
+    else{
+            let newCartProduct = {} as any;
+
+            newCartProduct.userID = this.auth.getUserPayload().sub; 
+            newCartProduct.brand=this.currentProduct.brand;
+            newCartProduct.name=this.currentProduct.name;  
+            newCartProduct.imageURL=this.currentProduct.imageURL;
+            newCartProduct.unitPrice=this.currentProduct.unitPrice;
+            newCartProduct.quantity=this.quantity;
+            newCartProduct.subtotal=this.subtotal;
+            newCartProduct.productID = this.currentProduct._id; 
+
+            this.cartApi.addCartProduct( newCartProduct  ).subscribe( (response)=>{
+              this.router.navigate(['/home']);
+            });
+    }      
+  }
+
+
   onRemoveQt(){
      if( this.quantity == 1)return;
      this.quantity--;
