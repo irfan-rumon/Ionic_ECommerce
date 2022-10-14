@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HeaderComponent } from '../components/header/header.component';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -15,6 +16,6 @@ import { SearchPage } from './search.page';
     IonicModule,
     SearchPageRoutingModule
   ],
-  declarations: [SearchPage]
+  declarations: [SearchPage, HeaderComponent]
 })
 export class SearchPageModule {}

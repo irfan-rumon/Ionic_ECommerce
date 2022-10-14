@@ -1,12 +1,28 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>search</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header></app-header>
+
+
+  <ion-item>
+    <div class="top-section">
+      <div class="search-group">
+        <form  #searchForm = "ngForm">
+            <input type="text" [(ngModel)]="searchedProduct" name="searchedProduct" placeholder="searh products...">
+            <ion-icon name="search"  [routerLink] = "['/search']" [queryParams] = "{'name' : searchedProduct}" (click)="reLoadPage()"></ion-icon>
+        </form>
+       
+      </div>
+      <ion-icon class="notify" name="notifications-outline"></ion-icon>
+    </div>
+  </ion-item>
+
+
 
 <ion-content>
   <ion-grid>
     <ion-row>
+      <h3 style="margin-left:5rem; font-weight:bold;font-style:italic;">Found {{ products.length }} Results</h3>
+    </ion-row>
+    <ion-row>
+      
       <ng-container *ngFor="let product of products">
         <ion-col  size = "6" [routerLink] = "['/details']" [queryParams] = "{'id' : product._id}">
           <img class="card-img" [src] = "product.imageURL" style="height: 10rem; width: 10rem;">

@@ -36,4 +36,10 @@ export class SearchPage implements OnInit {
 
   }
 
+  reLoadPage(){
+      this.products = [];
+      this.ngOnInit();
+  }
+
+
 }
