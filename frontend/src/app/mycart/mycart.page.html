@@ -1,0 +1,40 @@
+<div style="display: flex; margin-top: 2rem; justify-content: space-between;">
+  <ion-icon name="chevron-back-outline"></ion-icon>
+  <span style="text-align: center; font-size:medium; font-weight: bold;">Shopping Bag</span>
+  <ion-icon name="bag-outline" style="width: 1.5rem; height: 1.5rem; margin-right: 1rem;"></ion-icon>
+
+ 
+</div>
+
+<ion-content>
+
+     <ion-card *ngFor="let cart of carts">
+          <div>
+            <img [src]="cart.imageURL" style="width: 5rem; height: 8rem;">
+          </div>
+         
+
+          <div style="margin-left: 2rem; width: 10rem;" >
+            <h6 style="font-weight: bold;">{{  cart.name }}</h6>
+            <p style="font-size: small;">size: 760fl/225ml</p>
+            <h6 style="font-weight: bold;">${{  cart.subtotal }}</h6>
+          </div>
+
+        
+
+          <div style="margin-left: 3rem;">
+            <ion-icon  class="icon-btn" name="close-outline" style="margin-left: 4rem; margin-top: 1rem;"></ion-icon>
+         
+            <div style="display: flex; margin-top: 2rem; margin-left: 2rem;">
+              <ion-icon class="icon-btn" name="remove-circle-outline"></ion-icon>
+              <h6 style="font-weight: bold; margin-top: -5px; margin: 0 0.3rem;">{{  cart.quantity }}</h6>
+              <ion-icon class="icon-btn" name="add-circle-outline"></ion-icon>
+            </div>
+           
+          </div>
+
+          
+         
+     </ion-card>
+
+</ion-content>
