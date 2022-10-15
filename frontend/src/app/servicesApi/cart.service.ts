@@ -25,6 +25,11 @@ export class CartService {
     return this.http.get<any>(this.apiUrl);
   }
 
+  getCartProduct(cartId: any): Observable<any> {
+    const url = `${this.apiUrl}/${cartId}`;
+    return this.http.get<any>(url);
+  }
+
   addCartProduct(cp: any):any {
     return this.http.post<any>(this.apiUrl, cp);
   }
