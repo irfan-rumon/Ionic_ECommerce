@@ -11,6 +11,10 @@ import { CartService } from '../servicesApi/cart.service';
 })
 export class MycartPage implements OnInit {
 
+  total: number = 0;
+  shipping: number = 3;
+  grandTotal: number = 3;
+
   carts:any[] = [];
 
   constructor(
@@ -21,14 +25,64 @@ export class MycartPage implements OnInit {
 
   ngOnInit() {
     this.cartApi.getCartProducts().subscribe( (response:any)=>{
-        let allCartProducts: any[] = response.data;
-        for(let cp of allCartProducts){
-            if( cp.userID == this.auth.getUserPayload().sub)
+        let allcarts: any[] = response.data;
+        for(let cp of allcarts){
+            if( cp.userID == this.auth.getUserPayload().sub){
                 this.carts.push(cp);
+                this.total += +cp.subtotal;
+                this.grandTotal += +cp.subtotal;
+            }
         }
         console.log(this.carts);
     })   
 
+  }
+
+  addQuantity(cartProduct:any){
+   
+    for(let cp  of this.carts){
+      if(cp._id == cartProduct._id){ 
+          cp.quantity++;
+          cp.subtotal = +cp.unitPrice  +  +cp.subtotal;
+          this.total += +cp.unitPrice;
+          this.grandTotal += +cp.unitPrice;  
+          this. cartApi.editCartProduct(cartProduct._id, cp).subscribe(); 
+        
+          return; 
+      }
+    }
+  }
+
+  minusQuantity(cartProduct:any){
+    if( cartProduct.quantity == 1){
+        this.deleteCartProduct(cartProduct);
+        return;
+    }
+
+    for(let cp  of this.carts){
+      if(cp._id == cartProduct._id){ 
+          cp.quantity--;
+          cp.subtotal =  +cp.subtotal -  +cp.unitPrice;  
+          this.total -= +cp.unitPrice;
+          this.grandTotal -= +cp.unitPrice;
+          this.cartApi.editCartProduct(cartProduct._id, cp).subscribe(); 
+          return; 
+      }
+    }
+
+  }
+
+  deleteCartProduct(cartProduct:any){
+    
+      this.total -= +cartProduct.subtotal;
+      this.grandTotal -= +cartProduct.subtotal;
+     
+
+      this.cartApi.deleteCartProduct(cartProduct).subscribe(); //external server theke delete
+      const indexOfObject = this.carts.findIndex((object) => {
+        return object === cartProduct;
+      });  
+      this.carts.splice(indexOfObject, 1);//internal array theke delete*/
   }
 
 }

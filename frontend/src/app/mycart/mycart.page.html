@@ -23,12 +23,12 @@
         
 
           <div style="margin-left: 3rem;">
-            <ion-icon  class="icon-btn" name="close-outline" style="margin-left: 4rem; margin-top: 1rem;"></ion-icon>
+            <ion-icon  class="icon-btn" name="close-outline" (click)="deleteCartProduct(cart)" style="margin-left: 4rem; margin-top: 1rem;"></ion-icon>
          
             <div style="display: flex; margin-top: 2rem; margin-left: 2rem;">
-              <ion-icon class="icon-btn" name="remove-circle-outline"></ion-icon>
+              <ion-icon class="icon-btn" name="remove-circle-outline" (click)="minusQuantity(cart)"></ion-icon>
               <h6 style="font-weight: bold; margin-top: -5px; margin: 0 0.3rem;">{{  cart.quantity }}</h6>
-              <ion-icon class="icon-btn" name="add-circle-outline"></ion-icon>
+              <ion-icon class="icon-btn" name="add-circle-outline" (click)="addQuantity(cart)"></ion-icon>
             </div>
            
           </div>
@@ -36,5 +36,28 @@
           
          
      </ion-card>
+
+     <ion-input id="promo-code" placeholder="Promo Code">
+           <ion-button slot="end">Apply</ion-button> 
+     </ion-input>
+
+     <ion-item class="d-flx" style="margin-top: 2rem; font-weight: 500;">
+          <h6>Subtotal</h6>
+          <div style="margin-left: 12rem;">${{ total  }}</div>
+     </ion-item>
+
+     <ion-item class="d-flx" style="font-weight: 500;">
+       <h6>Shipping</h6>
+       <div style="margin-left: 11.7rem;">${{ shipping  }}</div>
+     </ion-item>
+
+     <ion-item class="d-flx" style="font-weight: 500;">
+      <h6>Bag Total</h6>
+      <div style="margin-left: 11.5rem;">${{ grandTotal  }}</div>
+    </ion-item>
+
+    <ion-button style="width: 95%; margin-top:2rem;">
+         Proceed to Checkout
+    </ion-button>
 
 </ion-content>
