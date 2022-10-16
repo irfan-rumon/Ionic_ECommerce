@@ -6,7 +6,7 @@ const routes: Routes = [
   {
     path: 'home',
     canActivate: [UserGuard],
-    // loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    //loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
     children: [
       { path: '', loadChildren: () => import('./home/home.module').then(m => m.HomePageModule) },
       {

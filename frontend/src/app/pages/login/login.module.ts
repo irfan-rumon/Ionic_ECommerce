@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { HeaderComponent } from 'src/app/components/header/header.component';
-import { BackButtonComponent } from 'src/app/components/back-button/back-button.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -21,6 +19,6 @@ import { LoginPage } from './login.page';
     LoginPageRoutingModule,
     ReactiveFormsModule
   ],
-  declarations: [LoginPage,HeaderComponent,BackButtonComponent]
+  declarations: [LoginPage]
 })
 export class LoginPageModule {}
