@@ -1,12 +1,14 @@
 
-<div style="display: flex; margin-top: 2rem; justify-content: space-between;">
-  <ion-icon name="chevron-back-outline"></ion-icon>
+<div style="display: flex; margin-top: 2rem; justify-content: space-between; padding-bottom: 1rem;">
+  <ion-icon name="chevron-back-outline" (click)="goPrevPage()"></ion-icon>
   <span style="text-align: center; font-size:medium;">Checkout</span>
-  <img src="https://images.unsplash.com/photo-1665691288751-faa9809238e8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" style=" height:2.2rem; width:2.2rem; border-radius: 20px;">
+  <span slot="end" style="margin-top: -12px;">
+    <img src="https://images.unsplash.com/photo-1665691288751-faa9809238e8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" style=" height:2.2rem; width:2.2rem; border-radius: 20px; margin-right: 0.5rem;">
+   </span>
 </div>
 
 
-<ion-content>
+<ion-content style="margin-top: 2rem;">
 
     <div class="login-section ion-padding">
         <div class="heading ion-padding">

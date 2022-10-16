@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserApiService } from '../servicesApi/user-api.service';
 import { AuthorizationService } from '../servicesApi/authorization.service';
 import { CartService } from '../servicesApi/cart.service';
-import { OrderApiService } from '../servicesApi/order-api.service';
-import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-checkout',
@@ -21,15 +20,19 @@ export class CheckoutPage implements OnInit {
 
   constructor(
     private router: Router,
+    private loc: Location,
     private auth: AuthorizationService,
-    private acr:ActivatedRoute,
     private cartApi: CartService,
-    private userApi: UserApiService
+  
   ) { }
 
   ngOnInit() {
      this.currentUserID = this.auth.getUserPayload().sub;
   }  
+
+  goPrevPage(){
+    this.loc.back();
+  }
 
   onCheckout(){ 
       this.cartApi.getCartProducts().subscribe( res=>{
