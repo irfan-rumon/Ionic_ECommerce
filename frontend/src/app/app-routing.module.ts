@@ -9,15 +9,10 @@ const routes: Routes = [
     //loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
     children: [
       { path: '', loadChildren: () => import('./home/home.module').then(m => m.HomePageModule) },
-      {
-        path: 'allfoods',
-        canActivate: [UserGuard],
-        loadChildren: () => import('./pages/allfoods/allfoods.module').then(m => m.AllfoodsPageModule)
-
-      },
+      
       {
         path: 'signup',
-        loadChildren: () => import('./pages/allfoods/allfoods.module').then(m => m.AllfoodsPageModule)
+        loadChildren: () => import('./pages/signup/signup.module').then(m => m.SignupPageModule)
 
       }
     ]
@@ -27,11 +22,7 @@ const routes: Routes = [
     redirectTo: 'login',
     pathMatch: 'full'
   },
-  {
-    path: 'allfoods',
-    canActivate: [UserGuard],
-    loadChildren: () => import('./pages/allfoods/allfoods.module').then(m => m.AllfoodsPageModule)
-  },
+  
   {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)

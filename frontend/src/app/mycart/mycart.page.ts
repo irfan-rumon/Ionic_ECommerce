@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthorizationService } from '../servicesApi/authorization.service';
 import { CartService } from '../servicesApi/cart.service';
-
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-mycart',
@@ -21,6 +21,7 @@ export class MycartPage implements OnInit {
   constructor(
     private router:Router,
     private cartApi: CartService,
+    private loc: Location,
     private auth: AuthorizationService
   ) { }
 
@@ -38,6 +39,10 @@ export class MycartPage implements OnInit {
         console.log(this.carts);
     })   
 
+  }
+
+  goPrevPage(){
+    this.loc.back();
   }
 
   addQuantity(cartProduct:any){

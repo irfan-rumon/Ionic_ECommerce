@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { HeaderComponent } from 'src/app/components/header/header.component';
 
-import { BackButtonComponent } from 'src/app/components/back-button/back-button.component';
+
 
 import { SignupPageRoutingModule } from './signup-routing.module';
 
@@ -21,6 +21,6 @@ import { SignupPage } from './signup.page';
     SignupPageRoutingModule,
     ReactiveFormsModule
   ],
-  declarations: [SignupPage,HeaderComponent,BackButtonComponent]
+  declarations: [SignupPage,HeaderComponent]
 })
 export class SignupPageModule {}
