@@ -5,7 +5,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { HeaderComponent } from 'src/app/components/header/header.component';
 
 
 
@@ -21,6 +20,6 @@ import { SignupPage } from './signup.page';
     SignupPageRoutingModule,
     ReactiveFormsModule
   ],
-  declarations: [SignupPage,HeaderComponent]
+  declarations: [SignupPage]
 })
 export class SignupPageModule {}

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
+import { AuthorizationService } from 'src/app/servicesApi/authorization.service';
 
 @Component({
   selector: 'app-nav',
@@ -11,16 +12,18 @@ export class NavComponent implements OnInit {
 
   currentUser:any = {};
 
-  constructor(private _auth: AuthService , private menu: MenuController) { }
+  constructor(private auth: AuthorizationService ,
+    private router:Router,
+    private menu: MenuController) { }
 
   ngOnInit() {
-    this._auth.currentUser.subscribe(res => {
-      this.currentUser = res;
-    });
     
   }
+
   logout(){
-    this._auth.logout();
+     this.auth.deleteToken();
+     this.close();
+     this.router.navigate(['/login']);
   }
   close(){
     this.menu.close();
