@@ -4,6 +4,7 @@ import { ProductApiService } from 'src/app/servicesApi/product-api.service';
 import {AuthorizationService} from 'src/app/servicesApi/authorization.service';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/servicesApi/cart.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-details',
@@ -22,6 +23,7 @@ export class DetailsPage implements OnInit {
   constructor(private acr: ActivatedRoute,
     private prd:  ProductApiService,
     private router: Router,
+    private loc: Location,
     private cartApi: CartService,
     private auth: AuthorizationService) { }
 
@@ -39,6 +41,10 @@ export class DetailsPage implements OnInit {
       
     });
    
+  }
+
+  goPrevPage(){
+    this.loc.back();
   }
  
   onCart(){
