@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { ProductApiService } from '../servicesApi/product-api.service';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-search',
   templateUrl: './search.page.html',
@@ -16,6 +16,7 @@ export class SearchPage implements OnInit {
   constructor(
       private router:Router,
       private acr: ActivatedRoute,
+      private loc: Location,
       private productApi: ProductApiService
   ) { }
 
@@ -34,6 +35,11 @@ export class SearchPage implements OnInit {
         console.log("Paici", this.products);
     })
 
+  }
+
+  
+  goPrevPage(){
+    this.loc.back();
   }
 
   reLoadPage(){
