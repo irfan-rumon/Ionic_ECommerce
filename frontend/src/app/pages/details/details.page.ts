@@ -19,6 +19,7 @@ export class DetailsPage implements OnInit {
   buynow:boolean = false;
   quantity: number = 1;
   subtotal: number = 0;
+  cartNum: number = 0;
 
   constructor(private acr: ActivatedRoute,
     private prd:  ProductApiService,
@@ -28,6 +29,14 @@ export class DetailsPage implements OnInit {
     private auth: AuthorizationService) { }
 
   ngOnInit() {
+
+    this.cartApi.getCartProducts().subscribe( (allCarts)=>{
+          let allCartsArr: any[] = allCarts.data;
+          for(let cart of allCartsArr){
+            if( cart.userID == this.auth.getUserPayload().sub)
+                this.cartNum += +cart.quantity;
+          }
+        })
    
     this.acr.queryParams.subscribe(res => {
       this.params = res['id'];
@@ -66,7 +75,8 @@ export class DetailsPage implements OnInit {
             newCartProduct.productID = this.currentProduct._id; 
 
             this.cartApi.addCartProduct( newCartProduct  ).subscribe( (response)=>{
-              this.router.navigate(['/home']);
+                //this.router.navigate(['/home']);
+                this.cartNum += newCartProduct.quantity;
             });
     }      
   }

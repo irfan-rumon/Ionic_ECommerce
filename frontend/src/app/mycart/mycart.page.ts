@@ -11,6 +11,7 @@ import { Location } from '@angular/common';
 })
 export class MycartPage implements OnInit {
 
+  cartNum: number = 0;
   cartID: string;
   total: number = 0;
   shipping: number = 3;
@@ -26,6 +27,8 @@ export class MycartPage implements OnInit {
   ) { }
 
   ngOnInit() {
+
+
     this.cartApi.getCartProducts().subscribe( (response:any)=>{
         let allcarts: any[] = response.data;
         for(let cp of allcarts){
@@ -34,6 +37,7 @@ export class MycartPage implements OnInit {
                 this.carts.push(cp);
                 this.total += +cp.subtotal;
                 this.grandTotal += +cp.subtotal;
+                this.cartNum += +cp.quantity;
             }
         }
         console.log(this.carts);
@@ -41,12 +45,15 @@ export class MycartPage implements OnInit {
 
   }
 
+
+
   goPrevPage(){
     this.loc.back();
   }
 
   addQuantity(cartProduct:any){
    
+    this.cartNum++;
     for(let cp  of this.carts){
       if(cp._id == cartProduct._id){ 
           cp.quantity++;
@@ -65,6 +72,7 @@ export class MycartPage implements OnInit {
         this.deleteCartProduct(cartProduct);
         return;
     }
+    this.cartNum--;
 
     for(let cp  of this.carts){
       if(cp._id == cartProduct._id){ 
@@ -80,6 +88,7 @@ export class MycartPage implements OnInit {
   }
 
   deleteCartProduct(cartProduct:any){
+     this.cartNum -= +cartProduct.quantity;
     
       this.total -= +cartProduct.subtotal;
       this.grandTotal -= +cartProduct.subtotal;
