@@ -17,8 +17,7 @@ export default function (app: Application): Model<any> {
     unitPrice : { type: Number, required: true },
     quantity: { type: Number, required: true },
     brand: { type: String, required: true },
-    subtotal: { type: Number, required: true },
-    status: {type: String, default: 'Pending'}
+    subtotal: { type: Number, required: true }
   }, {
     timestamps: true
   });

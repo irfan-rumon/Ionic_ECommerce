@@ -15,7 +15,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 
-export class anyApiService {
+export class CustomerApiService {
 
   private apiUrl = 'http://localhost:3030/anys';
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CartService } from '../servicesApi/cart.service';
+import { OrderApiService } from '../servicesApi/order-api.service';
+import { OrderProductApiService } from '../servicesApi/order-product-api.service';
 import { AuthorizationService } from '../servicesApi/authorization.service';
 import { Location } from '@angular/common';
 @Component({
@@ -11,30 +12,40 @@ import { Location } from '@angular/common';
 export class MyorderPage implements OnInit {
 
   currentUserID: string;
-  allCartProducts: any[] = [];
+ 
+  orders: any[] = [];
   orderProducts: any[] = [];
-  total:number = 0;
-  shipping: number = 3;
-  grandTotal: number = 3;
+  
+
+ 
 
   constructor(
     private router:Router,
-    private cartApi: CartService,
+    private orderApi: OrderApiService,
+    private OrderProductApi: OrderProductApiService,
     private loc: Location,
     private auth: AuthorizationService
   ) { }
 
   ngOnInit() {
       this.currentUserID = this.auth.getUserPayload().sub;
-      this.cartApi.getCartProducts().subscribe( res=>{
-          this.allCartProducts = res.data;
-          for(let cp of this.allCartProducts){
-              if( cp.userID == this.currentUserID && cp.status == "Confirmed"){
-                  this.orderProducts.push(cp);
-                  this.total += +cp.subtotal;
-                  this.grandTotal += +cp.subtotal;
-              }
-          }
+      
+      this.OrderProductApi.getOrderProducts().subscribe(  (resOrderProducts:any)=>{
+            let allOrderProducts:any[] = resOrderProducts.data;
+            for(let op of allOrderProducts){
+               if( op.userID == this.currentUserID){
+                  this.orderProducts.push(op);
+               }
+            }  
+      })
+
+      this.orderApi.getOrders().subscribe(  (resOrders:any)=>{
+         let allOrders:any[] = resOrders.data;
+         for(let order of allOrders){
+            if( order.userID == this.currentUserID){
+              this.orders.push( order );
+            }
+         }
       })
   }
 

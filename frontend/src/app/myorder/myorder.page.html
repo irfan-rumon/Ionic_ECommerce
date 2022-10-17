@@ -9,47 +9,50 @@
 </div>
 
 
-<ion-content>
+<ion-content *ngFor="let order of orders">
+                <ion-card *ngFor="let op of orderProducts">
+                        <div *ngIf = "op.orderID == order._id">
+                          <img [src]="op.imageURL" style="width: 6rem; height: 6rem;">
+                        </div>
+                      
+
+                        <div style="margin-left: 2rem; width: 10rem;" *ngIf = "op.orderID == order._id">
+                          <h6 style="font-weight: bold;">{{  op.name }}</h6>
+                          <p style="font-size: small;">size: 760fl/225ml</p>
+                          <h6 style="font-weight: bold;">${{  op.subtotal }}</h6>
+                        </div>
+
+                        <div style="display: flex; margin-left: 4rem;" *ngIf = "op.orderID == order._id">
+                          <ion-icon name="close-outline" style="width: 2rem; width: 2rem; margin-top:1rem; font-weight: bolder;"></ion-icon>
+                            <div style="font-size: 2rem; margin-top: 1rem;">  {{op.quantity}} </div> 
+                        </div>
 
 
-     <ion-card *ngFor="let op of orderProducts">
-          <div>
-            <img [src]="op.imageURL" style="width: 6rem; height: 6rem;">
-          </div>
-         
+              </ion-card>
 
-          <div style="margin-left: 2rem; width: 10rem;" >
-            <h6 style="font-weight: bold;">{{  op.name }}</h6>
-            <p style="font-size: small;">size: 760fl/225ml</p>
-            <h6 style="font-weight: bold;">${{  op.subtotal }}</h6>
-          </div>
+              <ion-item class="d-flx" style="margin-top: 2rem; font-weight: 500;">
+              <h6>Subtotal:</h6>
+              <div style="margin-left: 12rem;">${{ order.total  }}</div>
+              </ion-item>
 
-          <div style="display: flex; margin-left: 4rem;">
-            <ion-icon name="close-outline" style="width: 2rem; width: 2rem; margin-top:1rem; font-weight: bolder;"></ion-icon>
-              <div style="font-size: 2rem; margin-top: 1rem;">  {{op.quantity}} </div> 
-          </div>
+              <ion-item class="d-flx" style="font-weight: 500;" >
+              <h6>Shipping:</h6>
+              <div style="margin-left: 11.7rem;">${{ order.shipping  }}</div>
+              </ion-item>
+
+              <ion-item class="d-flx" style="font-weight: 500;" >
+              <h6>Bag Total:</h6>
+              <div style="margin-left: 11.5rem;">${{ order.grandTotal  }}</div>
+              </ion-item>
+
+              <ion-item class="d-flx" style="font-weight: 500;">
+              <h6>Status:</h6>
+              <div style="margin-left: 12.5rem; color: red;">Pending</div>
+              </ion-item>
+</ion-content>          
+   
 
 
-     </ion-card>
 
-     <ion-item class="d-flx" style="margin-top: 2rem; font-weight: 500;">
-      <h6>Subtotal:</h6>
-      <div style="margin-left: 12rem;">${{ total  }}</div>
- </ion-item>
 
- <ion-item class="d-flx" style="font-weight: 500;">
-   <h6>Shipping:</h6>
-   <div style="margin-left: 11.7rem;">${{ shipping  }}</div>
- </ion-item>
 
- <ion-item class="d-flx" style="font-weight: 500;">
-  <h6>Bag Total:</h6>
-  <div style="margin-left: 11.5rem;">${{ grandTotal  }}</div>
-</ion-item>
-
-<ion-item class="d-flx" style="font-weight: 500;">
-  <h6>Status:</h6>
-  <div style="margin-left: 12.5rem; color: red;">Pending</div>
-</ion-item>
-
-</ion-content>

@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { AuthorizationService } from '../servicesApi/authorization.service';
 import { CartService } from '../servicesApi/cart.service';
 import { Location } from '@angular/common';
+import { OrderApiService } from '../servicesApi/order-api.service';
+import { OrderProductApiService } from '../servicesApi/order-product-api.service';
 
 
 @Component({
@@ -22,7 +24,9 @@ export class CheckoutPage implements OnInit {
     private router: Router,
     private loc: Location,
     private auth: AuthorizationService,
+    private orderApi: OrderApiService,
     private cartApi: CartService,
+    private orderProductApi: OrderProductApiService
   
   ) { }
 
@@ -35,18 +39,40 @@ export class CheckoutPage implements OnInit {
   }
 
   onCheckout(){ 
-      this.cartApi.getCartProducts().subscribe( res=>{
-        this.allCartProducts = res.data;
-        for(let cp of this.allCartProducts){
-             if( cp.userID == this.currentUserID){
-                  let updatedCP = {...cp};
-                  updatedCP.status = "Confirmed";
-                  this.cartApi.editCartProduct(cp._id, updatedCP).subscribe();          
-             }
-        }
-        this.router.navigate(['/myorder']);
 
-      })
+    let order:any = {
+      userID: this.currentUserID
+    }
+
+    this.orderApi.addOrder(order).subscribe( (addedOrder)=>{
+          let tmpTotal:number = 0; let grandTotal: number = 0;
+          this.cartApi.getCartProducts().subscribe( (carts)=>{
+              let allCarts: any[] = carts.data;
+              for(let cart of allCarts){
+                  if( cart.userID == this.currentUserID){
+                      tmpTotal += +cart.subtotal;
+                      grandTotal += +cart.subtotal;
+                      let orderProduct:any = {...cart};
+                      orderProduct.orderID = addedOrder._id;
+                    
+                      this.orderProductApi.addOrderProduct(orderProduct).subscribe( (op:any)=>{
+                             
+                              this.cartApi.deleteCartProduct(cart).subscribe( (response:any)=>{
+                                
+                              })
+
+                      })
+
+                      let editedOrder: any = {...addedOrder};
+                      editedOrder.total = tmpTotal;
+                      editedOrder.grandTotal = tmpTotal + 3;
+                      editedOrder.shipping = 3;
+                      this.orderApi.editOrder( editedOrder._id, editedOrder).subscribe( (done)=>{} );
+
+                  }
+              }
+          } )
+    } )
   };
 
 }

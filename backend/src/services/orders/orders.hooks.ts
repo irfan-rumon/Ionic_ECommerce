@@ -6,12 +6,12 @@ const { authenticate } = authentication.hooks;
 
 export default {
   before: {
-    all: [ authenticate('jwt') ],
-    find: [  authenticate('jwt') ],
-    get: [  authenticate('jwt') ],
-    create: [  authenticate('jwt') ],
-    update: [  authenticate('jwt') ],
-    patch: [  authenticate('jwt') ],
+    all: [ ],
+    find: [  ],
+    get: [   ],
+    create: [  ],
+    update: [  ],
+    patch: [   ],
     remove: [  authenticate('jwt') ]
   },
 
