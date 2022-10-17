@@ -1,53 +1,119 @@
 
 
+<ion-content [scrollEvents]="true">
 
-<ion-content>
-
-    <div class="login-section ion-padding">
+    <div class="login-section ">
         <div class="heading ion-padding">
-            <h1>Welcome To F For Food</h1>
-        <p>Sign in to Continue</p>
+          
+        <span style="margin-left: 7.5rem; font-size:1.5rem; font-weight: bold; color:rgb(104, 104, 195);">Sign Up</span>
         </div>
-
-        <form [formGroup] = "signForm" class="login-form" (ngSubmit) = "signUp()">
+        <form (ngSubmit)="onSubmit()" #regForm = "ngForm">
             <div class="form-input">
                 <ion-item>
                     <ion-label position="floating">
-                        Name
+                       Full Name
                     </ion-label>
-                    <ion-input formControlName = "sname" type="email"></ion-input>
+                    <ion-input  placeholder="Enter Name" [(ngModel)]="user.fullName" name="fullName" #fullName="ngModel"   required></ion-input>
                 </ion-item>
+                <div *ngIf="fullName.invalid && (fullName.dirty || fullName.touched)"
+                        class="alert">
+
+                    <div *ngIf="fullName.errors?.['required']" style="color:red;margin-bottom: 0.5rem; margin-left: 0.5rem;">
+                        <p>*Full Name is required.</p>
+                    </div>
+                </div>
             </div>
+
             <div class="form-input">
                 <ion-item>
                     <ion-label position="floating">
                         Email
                     </ion-label>
-                    <ion-input formControlName = "semail" type="email"></ion-input>
+                    <ion-input  placeholder="Enter Email" [(ngModel)]="user.email" name="email" #email="ngModel"  email="true" required></ion-input>
                 </ion-item>
+
+                <div *ngIf="email.invalid && (email.dirty || email.touched)"
+                        class="alert">
+
+                    <div *ngIf="email.errors?.['required']" style="color:red;margin-bottom: 0.5rem; margin-left: 0.5rem;">
+                        <p>*Email is required.</p>
+                    </div>
+                </div>
             </div>
+
+            <div class="form-input">
+                <ion-item>
+                    <ion-label position="floating">
+                        Contact No.
+                    </ion-label>
+                    <ion-input  placeholder="Enter Contact No." [(ngModel)]="user.phone" name="phone" #phone="ngModel"   required></ion-input>
+                </ion-item>
+                <div *ngIf="phone.invalid && (phone.dirty || phone.touched)"
+                        class="alert">
+
+                    <div *ngIf="phone.errors?.['required']" style="color:red;margin-bottom: 0.5rem; margin-left: 0.5rem;">
+                        <p>*Contact No. is required.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-input">
+                <ion-item>
+                    <ion-label position="floating">
+                         Address:
+                    </ion-label>
+                    <ion-input  placeholder="Enter Address." [(ngModel)]="user.address" name="address" #address="ngModel"   required></ion-input>
+                </ion-item>
+                <div *ngIf="address.invalid && (address.dirty || address.touched)"
+                        class="alert">
+
+                    <div *ngIf="address.errors?.['required']" style="color:red;margin-bottom: 0.5rem; margin-left: 0.5rem;">
+                        <p>*Address is required.</p>
+                    </div>
+                </div>
+            </div>
+
             <div class="form-input">
                 <ion-item>
                     <ion-label position="floating">
                         Password
                     </ion-label>
-                    <ion-input formControlName = "spassword" type="password"></ion-input>
+                    <ion-input type="password" placeholder="Enter Password" [(ngModel)]="user.password" name="password" #pass="ngModel"   required></ion-input>
                 </ion-item>
+
+                <div *ngIf="pass.invalid && (pass.dirty || pass.touched)"
+                        class="alert">
+
+                    <div *ngIf="pass.errors?.['required']" style="color:red;margin-bottom: 0.5rem; margin-left: 0.5rem;">
+                        <p>*Password is required.</p>
+                    </div>
+                </div>
+
             </div>
+
             <div class="form-input">
                 <ion-item>
                     <ion-label position="floating">
-                        Verify Password
+                        Confirm Password:
                     </ion-label>
-                    <ion-input formControlName = "svpassword" type="password"></ion-input>
+                    <ion-input type="password" placeholder="Enter Password" [(ngModel)]="user.passConfirm" name="passConfirm" #passConfirm="ngModel"   required></ion-input>
                 </ion-item>
+
+                <div *ngIf="passConfirm.invalid && (passConfirm.dirty || passConfirm.touched)"
+                        class="alert">
+
+                    <div *ngIf="passConfirm.errors?.['required']" style="color:red;margin-bottom: 0.5rem; margin-left: 0.5rem;">
+                        <p>*Password is required.</p>
+                    </div>
+                </div>
+
             </div>
-            <ion-input type = "file" (change) = "getSelected($event)">Choose profile picture</ion-input>
-            <div class="action-button ion-padding">
-                <ion-button type = "submit" size="large" class="login-button">Sign Up</ion-button>
-                <ion-button class="signup-button" size="large" fill="outline" routerLink="/login">Login</ion-button>
+           
+            <div class="action-button ion-padding" style="margin-left: 6rem; width:auto;">
+                <ion-button type = "submit" size="large" class="login-button">Sign UP</ion-button> 
             </div>
+          
         </form>
     </div>
-     <img [src] = "downloadURL | async" alt="">
+      
 </ion-content>

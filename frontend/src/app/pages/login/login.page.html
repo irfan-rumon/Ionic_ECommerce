@@ -2,37 +2,52 @@
 
 <ion-content>
 
-    <div class="login-section ion-padding">
+    <div class="login-section ">
         <div class="heading ion-padding">
           
-        <p>Sign in to Continue</p>
+        <span style="margin-left: 6rem; font-size:medium; color:rgb(104, 104, 195);">Sign in to Continue</span>
         </div>
 
         <form (ngSubmit)="onLogin()" #logForm = "ngForm">
             <div class="form-input">
-                <ion-icon name="mail-outline"></ion-icon>
                 <ion-item>
                     <ion-label position="floating">
                         Email
                     </ion-label>
                     <ion-input  placeholder="Enter Email" [(ngModel)]="user.email" name="email" #email="ngModel"  email="true" required></ion-input>
                 </ion-item>
+
+                <div *ngIf="email.invalid && (email.dirty || email.touched)"
+                        class="alert">
+
+                    <div *ngIf="email.errors?.['required']" style="color:red;margin-bottom: 0.5rem; margin-left: 0.5rem;">
+                        <p>*Email is required.</p>
+                    </div>
+                </div>
             </div>
             <div class="form-input">
-                <ion-icon name="lock-closed-outline"></ion-icon>
                 <ion-item>
                     <ion-label position="floating">
                         Password
                     </ion-label>
-                    <ion-input type="password" placeholder="Enter Password" [(ngModel)]="user.password" name="password" #password="ngModel"   required></ion-input>
+                    <ion-input type="password" placeholder="Enter Password" [(ngModel)]="user.password" name="password" #pass="ngModel"   required></ion-input>
                 </ion-item>
+
+                <div *ngIf="pass.invalid && (pass.dirty || pass.touched)"
+                        class="alert">
+
+                    <div *ngIf="pass.errors?.['required']" style="color:red;margin-bottom: 0.5rem; margin-left: 0.5rem;">
+                        <p>*Password is required.</p>
+                    </div>
+                </div>
+
             </div>
-            <div class="action-button ion-padding">
-                <ion-button type = "submit" size="large" class="login-button">Log in</ion-button>
-                
+
+            <div class="action-button ion-padding" style="margin-left: 6rem; width:auto;">
+                <ion-button type = "submit" size="large" class="login-button">Log in</ion-button> 
             </div>
         </form>
 
-        <ion-button class="signup-button" size="large" fill="outline" (click) = "goto()">Sign Up</ion-button>
+      
     </div>
 </ion-content>

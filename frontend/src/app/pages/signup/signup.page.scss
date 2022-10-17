@@ -2,7 +2,7 @@ ion-content{
     --background: linear-gradient(0deg,rgba(226,27,212,0.7),rgba(226,27,212,0.1));
 }
 .login-section{
-    height: 80vh;
+    height: 99vh;
     width: 100%;
     max-width: 500px;
     background: #fff;
@@ -14,14 +14,15 @@ ion-content{
     border-top-left-radius: 46px;
     border-top-right-radius: 46px;
     animation: bottom-to-top 3s;
+    overflow-y: auto;
     .heading{
-        margin-top: 20px;
+        margin-top: 2px;
         h1{
             font-size: 1.6rem;
             font-weight: bolder;
         }
         p{
-            margin-top: 20px;
+            margin-top: 2px;
             font-size: 1rem;
             color: #7b7b7b;
         }
