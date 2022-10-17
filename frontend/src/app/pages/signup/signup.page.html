@@ -5,7 +5,8 @@
     <div class="login-section ">
         <div class="heading ion-padding">
           
-        <span style="margin-left: 7.5rem; font-size:1.5rem; font-weight: bold; color:rgb(104, 104, 195);">Sign Up</span>
+            <ion-icon name="chevron-back-outline" slot="start" (click)="goPrevPage()"></ion-icon>    
+        <span style="margin-left: 6.5rem; font-size:1.5rem; font-weight: bold; color:rgb(104, 104, 195);">Sign Up</span>
         </div>
         <form (ngSubmit)="onSubmit()" #regForm = "ngForm">
             <div class="form-input">
@@ -114,7 +115,11 @@
             </div>
            
             <div class="action-button ion-padding" style="margin-left: 6rem; width:auto;">
-                <ion-button type = "submit" size="large" class="login-button">Sign UP</ion-button> 
+                <ion-button  *ngIf="regForm.valid && user.password == user.passConfirm"    type = "submit" size="large" class="login-button">Sign UP</ion-button> 
+            </div>
+
+            <div class="action-button ion-padding" style="margin-left: 6rem; width:auto;">
+                <ion-button type = "submit"  *ngIf="!regForm.valid || !(user.password == user.passConfirm)" size="large" [disabled]="true"  class="login-button">Sign UP</ion-button> 
             </div>
           
         </form>

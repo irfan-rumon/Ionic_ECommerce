@@ -1,12 +1,11 @@
-
-
 <ion-content>
 
     <div class="login-section ">
         <div class="heading ion-padding">
           
-        <span style="margin-left: 6rem; font-size:medium; color:rgb(104, 104, 195);">Sign in to Continue</span>
-        </div>
+            <ion-icon name="chevron-back-outline" slot="start" (click)="goPrevPage()"></ion-icon>    
+            <span style="margin-left: 6.5rem; font-size:1.5rem; font-weight: bold; color:rgb(104, 104, 195);">Sign IN</span>
+        </div>    
 
         <form (ngSubmit)="onLogin()" #logForm = "ngForm">
             <div class="form-input">
@@ -49,10 +48,14 @@
             </div>
 
             <div class="action-button ion-padding" style="margin-left: 6rem; width:auto;">
-                <ion-button type = "submit" size="large" class="login-button">Log in</ion-button> 
+                <ion-button  *ngIf="logForm.valid" type = "submit" size="large" class="login-button">Sign In</ion-button> 
+            </div>
+
+            <div class="action-button ion-padding" style="margin-left: 6rem; width:auto;">
+                <ion-button type = "submit"  *ngIf="!logForm.valid" size="large" [disabled]="true"  class="login-button">Sign In</ion-button> 
             </div>
         </form>
 
       
-    </div>
+   </div>
 </ion-content>

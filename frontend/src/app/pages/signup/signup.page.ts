@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserApiService } from 'src/app/servicesApi/user-api.service';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
-
+import { Location } from '@angular/common';
 
 
 
@@ -18,10 +17,15 @@ export class SignupPage implements OnInit {
   passNotMatched: boolean = false;
  
   constructor(private router: Router, 
+    private loc: Location,
     private userApi: UserApiService) { }
 
   ngOnInit() {
    
+  }
+
+  goPrevPage(){
+    this.loc.back();
   }
 
   onSubmit(){
@@ -33,6 +37,7 @@ export class SignupPage implements OnInit {
 
     this.userApi.addUser(this.user).subscribe( (addedUser)=>{
           console.log("AddedUser");
+          this.router.navigate(['/login']);
     })
   };
     

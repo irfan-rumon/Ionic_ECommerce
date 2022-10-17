@@ -3,6 +3,7 @@ import { LoggerUser } from 'src/app/models/loggerUser';
 import { AuthorizationService } from 'src/app/servicesApi/authorization.service';
 import { UserApiService } from 'src/app/servicesApi/user-api.service';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ export class LoginPage implements OnInit {
 
   constructor(private auth:  AuthorizationService,
               private userApi: UserApiService,
+              private loc: Location,
               private router: Router) { }
  
   ngOnInit() {
@@ -33,8 +35,8 @@ export class LoginPage implements OnInit {
       })
   }
 
-  goto(){
-    this.router.navigate(['/signup']);
+  goPrevPage(){
+      this.loc.back();
   }
 
 }
