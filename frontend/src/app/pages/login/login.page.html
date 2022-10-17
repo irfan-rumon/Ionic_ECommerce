@@ -13,7 +13,7 @@
                     <ion-label position="floating">
                         Email
                     </ion-label>
-                    <ion-input  placeholder="Enter Email" [(ngModel)]="user.email" name="email" #email="ngModel" [email]="true" required></ion-input>
+                    <ion-input  #userEmail placeholder="Enter Email" [(ngModel)]="user.email" name="email" #email="ngModel" [email]="true" required></ion-input>
                 </ion-item>
 
                 <div *ngIf="email.invalid && (email.dirty || email.touched)"
@@ -34,7 +34,7 @@
                     <ion-label position="floating">
                         Password
                     </ion-label>
-                    <ion-input type="password" placeholder="Enter Password" [(ngModel)]="user.password" name="password" #pass="ngModel"   required></ion-input>
+                    <ion-input  #userPass  type="password" placeholder="Enter Password" [(ngModel)]="user.password" name="password" #pass="ngModel"   required></ion-input>
                 </ion-item>
 
                 <div *ngIf="pass.invalid && (pass.dirty || pass.touched)"
@@ -46,6 +46,10 @@
                 </div>
 
             </div>
+
+            <div *ngIf="email.valid && pass.valid &&  failedLogin" style="color:red;margin-bottom: 0.5rem; margin-left: 0.5rem; margin-top: 0.5rem;">
+                *Wrong credentials     
+          </div>
 
             <div class="action-button ion-padding" style="margin-left: 6rem; width:auto;">
                 <ion-button  *ngIf="logForm.valid" type = "submit" size="large" class="login-button">Sign In</ion-button> 
