@@ -38,6 +38,10 @@
                     <div *ngIf="email.errors?.['required']" style="color:red;margin-bottom: 0.5rem; margin-left: 0.5rem;">
                         <p>*Email is required.</p>
                     </div>
+
+                    <div *ngIf="email.errors?.['email']" style="color:red;margin-bottom: 0.5rem; margin-left: 0.5rem;" >
+                        *Email address is not valid. 
+                    </div>
                 </div>
             </div>
 

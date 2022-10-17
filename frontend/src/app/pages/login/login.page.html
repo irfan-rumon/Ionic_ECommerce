@@ -14,7 +14,7 @@
                     <ion-label position="floating">
                         Email
                     </ion-label>
-                    <ion-input  placeholder="Enter Email" [(ngModel)]="user.email" name="email" #email="ngModel"  email="true" required></ion-input>
+                    <ion-input  placeholder="Enter Email" [(ngModel)]="user.email" name="email" #email="ngModel" [email]="true" required></ion-input>
                 </ion-item>
 
                 <div *ngIf="email.invalid && (email.dirty || email.touched)"
@@ -23,6 +23,11 @@
                     <div *ngIf="email.errors?.['required']" style="color:red;margin-bottom: 0.5rem; margin-left: 0.5rem;">
                         <p>*Email is required.</p>
                     </div>
+
+                    <div *ngIf="email.errors?.['email']" style="color:red;margin-bottom: 0.5rem; margin-left: 0.5rem;" >
+                        *Email address is not valid. 
+                    </div>
+
                 </div>
             </div>
             <div class="form-input">
