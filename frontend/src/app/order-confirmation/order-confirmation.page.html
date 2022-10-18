@@ -1,0 +1,38 @@
+
+<div style="display: flex; margin-top: 2rem; justify-content: space-between;">
+  <ion-icon name="chevron-back-outline" (click)="goPrevPage()" style="margin-left: 0.5rem; font-size:1.2rem;"></ion-icon>
+  <span style="text-align: center; font-size:medium; font-weight: bold;">My Order</span>
+  <span slot="end" style="margin-top: -10px;">
+    <img src="https://images.unsplash.com/photo-1665691288751-faa9809238e8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" style=" height:2.2rem; width:2.2rem; border-radius: 20px; margin-right: 0.5rem;">
+   </span>
+
+</div>
+
+
+<div class="success"> 
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            
+          </ion-buttons>
+          <ion-title>Your Order</ion-title>
+        </ion-toolbar>
+      </ion-header>
+
+
+      <div class="show-up">
+
+          <div class="img-div">
+            <img
+          src="https://media.istockphoto.com/vectors/paid-success-payment-approved-notice-icon-vector-flat-bill-tax-pay-vector-id1271278705?k=20&m=1271278705&s=612x612&w=0&h=0YdsBj21lQdzQU1rUE79Vp5P2HczAG0E30DZRlCT0no="
+          alt="">
+          </div>
+
+        <h1 style="font-weight: bold; color:green; font-size: 500; margin-bottom: 0.8rem;"> ORDER SUCCESS </h1>
+        <button class="payment-btn" (click) = "cancelSuccess()" style="margin-top: 1rem;">
+               Back To Home
+        </button>
+      </div>
+
+
+</div>
