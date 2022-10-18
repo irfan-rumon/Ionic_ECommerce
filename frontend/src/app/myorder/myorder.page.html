@@ -8,7 +8,8 @@
  
 </div>
 
-<div id="main-display" *ngIf="orderProducts.length > 0">
+<ion-content>
+  <ng-container id="main-display" *ngIf="orderProducts.length > 0">
     <div *ngFor="let order of orders" class="order-item">    
                     <ng-container *ngFor = "let op of orderProducts">
                       <ion-card *ngIf = "op.orderID == order._id" style="margin: 0px;">
@@ -40,12 +41,13 @@
                       <div style="margin-left: 11rem; color: red;">Pending</div>
                   </ion-item>
     </div>    
-</div>      
+</ng-container>      
    
-<ion-content  *ngIf="orderProducts.length == 0">
+<ng-container  *ngIf="orderProducts.length == 0">
   <h1 style="text-align: center; margin-top: 4rem; color:rgb(234, 13, 13);">No Order Items!</h1>
-</ion-content>
+</ng-container>
 
+</ion-content>
 
 
 

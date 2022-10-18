@@ -37,6 +37,7 @@ export class MyorderPage implements OnInit {
                   this.orderProducts.push(op);
                }
             }  
+            console.log("Length of OrderProducts:  ", this.orderProducts);
       })
 
       this.orderApi.getOrders().subscribe(  (resOrders:any)=>{
