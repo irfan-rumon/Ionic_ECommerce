@@ -55,7 +55,11 @@ const routes: Routes = [
     path: 'myorder',
     canActivate: [UserGuard],
     loadChildren: () => import('./myorder/myorder.module').then( m => m.MyorderPageModule)
+  },  {
+    path: 'profile',
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
   }
+
 ];
 
 @NgModule({
