@@ -1,5 +1,5 @@
 <div style="display: flex; margin-top: 2rem; margin-bottom: 1rem; justify-content: space-between;">
-  <ion-icon name="chevron-back-outline" (click)="goPrevPage()"></ion-icon>
+  <ion-icon name="chevron-back-outline" (click)="goPrevPage()" style="margin-left: 0.5rem; font-size:1.2rem;"></ion-icon>
   <span style="text-align: center; font-size:medium; font-weight: bold;">Product Detail</span>
   <ion-icon name="cart-outline" style="width: 1.5rem; height: 1.5rem; margin-right: 1rem;" [routerLink]="['/mycart']"></ion-icon>
   <ion-badge id="cart-badge">{{ cartNum  }}</ion-badge>
@@ -8,34 +8,34 @@
 
 <ion-content >
   <div class="details">
-    <img [src]="currentProduct.imageURL" alt="" style="height: 25rem; width:98%;"/>
-    <div class="details-top">
-     
-    </div>
+    <img [src]="currentProduct.imageURL" alt="" style="height: 34rem; width:100%; z-index:-1;"/>
     
   </div>
 
-  <ion-card style="margin-left: 1rem; padding-left:1rem;">
+  <ion-card style="margin-top: -45px; z-index: 1; margin-left:0; margin-right: 0; padding:1rem; border-radius: 40px;">
       <div style="display: flex;">
-           <h4 style="margin-right: 8rem;font-weight: bolder;">{{  currentProduct.name }}</h4>
-           <ion-icon   style="margin-top: 1.5rem;" *ngFor="let i of [1,2,3,4,5]" name='star'></ion-icon>
+           <div style="width: 9rem; margin-right: 7.5rem;">
+            <h4 style="font-weight: bolder;">{{  currentProduct.name }}</h4>
+           </div>
+          
+           <ion-icon  slot="end" style="margin-top: 1.5rem;" *ngFor="let i of [1,2,3,4,5]" name='star'></ion-icon>
       </div>  
 
-      <div style="display: flex;">
-        <p style="margin-right: 7rem;font-size: small;">size: 7.60 fl az/225ml</p>
+      <div style="display: flex; margin-top: -8px;">
+        <p style="margin-right: 8rem;font-size: small;">size: 7.60 fl az/225ml</p>
         <p>(132 reviews)</p>
       </div>  
 
       
 
-      <div style="display: flex; align-items: center; margin-top: 2rem; margin-bottom: 1rem;">
-        <h3 style="margin-right: 5rem;font-weight: bolder;">${{ subtotal }}</h3>
+      <div style="display: flex; align-items: center; margin-top: 1rem; margin-bottom: 0.5rem;">
+        <h3 style="margin-right: 4rem;font-weight: bolder;">${{ subtotal }}</h3>
         <div class="cart-quantity">
             <ion-icon name="remove" (click)="onRemoveQt()"></ion-icon>
             <span>{{ quantity }}</span>
             <ion-icon name="add" (click)="onAddQt()"></ion-icon>
          </div>
-        <ion-button (click)="onCart()">Cart</ion-button>
+        <ion-button   style="width: 9rem;"    click="onCart()">Cart</ion-button>
       </div>  
 
   </ion-card>
