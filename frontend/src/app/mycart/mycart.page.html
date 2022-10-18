@@ -1,11 +1,11 @@
 <div style="display: flex; margin-top: 2rem; justify-content: space-between;">
-  <ion-icon name="chevron-back-outline" (click)="goPrevPage()"></ion-icon>
+  <ion-icon name="chevron-back-outline" (click)="goPrevPage()" style="margin-left: 0.5rem; font-size:1.2rem;"></ion-icon>
   <span style="text-align: center; font-size:medium; font-weight: bold;">Shopping Bag</span>
-   <ion-icon name="cart-outline" style="width: 1.5rem; height: 1.5rem; margin-right: 1rem;"></ion-icon>
+   <ion-icon name="cart-outline" style="width: 1.5rem; height: 1.5rem; margin-right: 1.3rem;"></ion-icon>
   <ion-badge id="cart-badge">{{ cartNum  }}</ion-badge>
 </div>
 
-<ion-content>
+<ion-content *ngIf="carts.length > 0">
 
      <ion-card *ngFor="let cart of carts">
           <div>
@@ -36,10 +36,6 @@
          
      </ion-card>
 
-     <ion-input id="promo-code" placeholder="Promo Code">
-           <ion-button slot="end">Apply</ion-button> 
-     </ion-input>
-
      <ion-item class="d-flx" style="margin-top: 2rem; font-weight: 500;">
           <h6>Subtotal</h6>
           <div style="margin-left: 12rem;">${{ total  }}</div>
@@ -59,4 +55,9 @@
          Proceed to Checkout
     </ion-button>
 
+</ion-content>
+
+
+<ion-content *ngIf="carts.length == 0">
+     <h1 style="text-align: center; margin-top: 4rem; color:rgb(234, 13, 13);">No Cart Items!</h1>
 </ion-content>

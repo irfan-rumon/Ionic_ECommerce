@@ -5,17 +5,14 @@
   <ion-tabs>
     <ion-tab-bar slot="bottom">
       <ion-tab-button tab = "home">
-        <ion-icon name = "home" [routerLink]="['/home']"></ion-icon>
+        <ion-icon name = "home"></ion-icon>
       </ion-tab-button>
-      <ion-tab-button tab = "cart">
-        <ion-icon name = "cart"  [routerLink]="['/mycart']"></ion-icon>
+      <ion-tab-button tab = "mycart">
+        <ion-icon name = "cart" ></ion-icon>
       </ion-tab-button>
-      <button class="empty">
-        <ion-icon name = "scan-outline">
-        </ion-icon>
-      </button>
-      <ion-tab-button tab = "cart">
-        <ion-icon name = "bag" [routerLink]="['/myorder']"></ion-icon>
+      
+      <ion-tab-button tab = "myorder">
+        <ion-icon name = "bag"></ion-icon>
       </ion-tab-button>
       <ion-tab-button tab = "login">
         <ion-icon name = "person"></ion-icon>
