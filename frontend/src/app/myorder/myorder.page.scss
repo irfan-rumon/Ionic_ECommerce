@@ -16,15 +16,22 @@ ion-card{
     height: 1.5rem;
 }
 
-#promo-code{
-    margin-left: 1rem;
-    width: 90%;
-    height: 3rem;
-    border: 1px solid black;
-    border-radius: 1rem;
-}
+
 
 .d-flx{
     display: flex;
     justify-content: space-between;
+}
+
+
+#main-display{
+    overflow-y: auto;
+}
+
+.order-item{
+    margin-top: 1rem;
+    margin: 0.8rem;
+    border-radius: 10px;
+    box-shadow: 5px 9px 10px rgb(187, 181, 181);
+    padding-top: 0.5rem 0;
 }
