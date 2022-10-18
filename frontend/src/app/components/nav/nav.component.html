@@ -1,41 +1,31 @@
 <ion-menu menuId="main-menu" content-id="main">
   <ion-content>
-    <div class="menu-header-bg">
-
-      <div class="custom-shape-divider-bottom-1665635609">
-        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
-        </svg>
-    </div>
-      
-      <div>
-        <ion-icon name="person-circle-outline"></ion-icon>
-      <ion-title *ngIf="currentUser.hasOwnProperty('email')">
-        {{ currentUser.name }}
-      </ion-title>
-      </div>
-    </div>
-    
-    <ion-list>
+    <h3 style="font-weight: bold; margin-left:35%; font-style: italic;">Menu</h3>
+    <ion-list style="margin-top: 1rem;">
       <ion-item>
-        <ion-icon name="home-outline" slot="start"></ion-icon>
-        <ion-label [routerLink]="['/home']" (click) = "close()">Home</ion-label>
+        <ion-icon name="home-outline" slot="start" style="color:rgb(183, 12, 149)"></ion-icon>
+        <ion-label [routerLink]="['/home']" (click) = "close()" >Home</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="person-outline" slot="start"  style="color:rgb(183, 12, 149)"></ion-icon>
+        <ion-label  [routerLink]="['/profile']" (click) = "close()" >Profile</ion-label>
       </ion-item>
 
     
       <ion-item>
-        <ion-icon name="cart-outline" slot="start"></ion-icon>
+        <ion-icon name="cart-outline" slot="start" style="color:rgb(183, 12, 149)"></ion-icon>
         <ion-label  [routerLink]="['/mycart']" (click) = "close()">Cart</ion-label>
       </ion-item>
 
       <ion-item>
-        <ion-icon name="bag-outline" slot="start"></ion-icon>
+        <ion-icon name="bag-outline" slot="start"  style="color:rgb(183, 12, 149)"></ion-icon>
         <ion-label  [routerLink]="['/myorder']" (click) = "close()">Order</ion-label>
       </ion-item>
    
       <ion-item>
-        <ion-icon name="log-out-outline" slot="start"></ion-icon>
-        <ion-label (click) = "logout()">Logout</ion-label>
+        <ion-icon name="log-out-outline" slot="start"  style="color:rgb(183, 12, 149)"></ion-icon>
+        <ion-label (click) = "logout()" (click) = "close()">Logout</ion-label>
       </ion-item>
     </ion-list>
     
