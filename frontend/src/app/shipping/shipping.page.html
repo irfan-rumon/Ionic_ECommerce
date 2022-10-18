@@ -1,0 +1,49 @@
+
+<div style="display: flex; margin-top: 2rem; justify-content: space-between; padding-bottom: 1rem;">
+  <ion-icon name="chevron-back-outline" (click)="goPrevPage()"></ion-icon>
+  <span style="text-align: center; font-size:medium; font-weight: bold;">Shipping Address</span>
+  <span slot="end" style="margin-top: -12px;">
+    <img src="https://images.unsplash.com/photo-1665691288751-faa9809238e8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" style=" height:2.2rem; width:2.2rem; border-radius: 20px; margin-right: 0.5rem;">
+   </span>
+</div>
+
+
+<ion-content style="margin-top: 1rem; overflow-y: auto;">
+
+
+
+        <form (ngSubmit)="onCheckout()" #logForm = "ngForm">
+            <div class="form-input">
+               
+                <ion-item >
+                    <ion-label position="floating">
+                       Delivery
+                    </ion-label>
+                    <ion-input  [value]="delivery"  [(ngModel)]="delivery" name="delivery" #email="ngModel"  email="true" required></ion-input>
+                </ion-item>
+            </div>
+            <div class="form-input">
+               
+                <ion-item>
+                    <ion-label position="floating">
+                     City
+                    </ion-label>
+                    <ion-input [value]="city" [(ngModel)]="city" name="city" #password="ngModel"   required></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label position="floating">
+                 Zipcode
+                  </ion-label>
+                  <ion-input  [value]="zipcode" type = "text" placeholder="Enter Card Number" [(ngModel)]="zipcode" name="zipcode" #password="ngModel"   required></ion-input>
+              </ion-item>
+
+            </div>
+            <div class="action-button ion-padding">
+                <ion-button  type = "submit" class="login-button">Confirm Order</ion-button>
+                
+            </div>
+        </form>
+
+
+</ion-content>

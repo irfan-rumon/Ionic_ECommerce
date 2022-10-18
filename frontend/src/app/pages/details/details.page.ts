@@ -63,6 +63,7 @@ export class DetailsPage implements OnInit {
         return;
     }
     else{
+            console.log("Ai j ekhane...");
             let newCartProduct = {} as any;
 
             newCartProduct.userID = this.auth.getUserPayload().sub; 

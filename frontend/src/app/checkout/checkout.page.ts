@@ -80,7 +80,9 @@ export class CheckoutPage implements OnInit {
                       editedOrder.total = tmpTotal;
                       editedOrder.grandTotal = tmpTotal + 3;
                       editedOrder.shipping = 3;
-                      this.orderApi.editOrder( editedOrder._id, editedOrder).subscribe( (done)=>{} );
+                      this.orderApi.editOrder( editedOrder._id, editedOrder).subscribe( (done)=>{
+                        this.router.navigate(['/order-confirmation']);
+                      } );
 
                   }
               }

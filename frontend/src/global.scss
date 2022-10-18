@@ -24,3 +24,21 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+
+.roundedInput.ion-invalid.item-has-focus {
+
+    --border-color: var(--ion-color-danger-shade);
+  }
+  
+  .roundedInput.ion-valid.item-has-focus {
+    --border-color: var(--ion-color-success-shade);
+  }
+  
+  .roundedInput.ion-invalid.ion-dirty {
+    --border-color: var(--ion-color-danger-shade);
+  }
+  
+  .roundedInput.ion-valid.ion-dirty {
+    --border-color: var(--ion-color-success-shade);
+  }
