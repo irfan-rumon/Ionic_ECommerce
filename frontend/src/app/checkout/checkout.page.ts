@@ -5,7 +5,7 @@ import { CartService } from '../servicesApi/cart.service';
 import { Location } from '@angular/common';
 import { OrderApiService } from '../servicesApi/order-api.service';
 import { OrderProductApiService } from '../servicesApi/order-product-api.service';
-
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-checkout',
@@ -25,10 +25,23 @@ export class CheckoutPage implements OnInit {
     private loc: Location,
     private auth: AuthorizationService,
     private orderApi: OrderApiService,
+    private alertController: AlertController,
     private cartApi: CartService,
     private orderProductApi: OrderProductApiService
   
   ) { }
+
+  async confirmAlert() {
+    const alert = await this.alertController.create({
+      header: 'Order Confirmed',
+      buttons: ['OK'],
+    });
+
+    await alert.present();
+    setTimeout(() => {
+      this.router.navigate(['/myorder']);
+    }, 2000);
+  }
 
   ngOnInit() {
      this.currentUserID = this.auth.getUserPayload().sub;
@@ -73,7 +86,8 @@ export class CheckoutPage implements OnInit {
               }
           } )
     } )
-  };
+  }
+
 
 }
       

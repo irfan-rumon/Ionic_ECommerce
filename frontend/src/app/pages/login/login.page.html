@@ -58,8 +58,17 @@
             <div class="action-button ion-padding" style="margin-left: 6rem; width:auto;">
                 <ion-button type = "submit"  *ngIf="!logForm.valid" size="large" [disabled]="true"  class="login-button">Sign In</ion-button> 
             </div>
+
+            <p style="font-size: normal; margin-left: 1rem ;">Don't have an account? 
+                <a [routerLink] = "['/signup']"
+                  class="link-danger">Register</a>
+            </p>
+
         </form>
 
       
    </div>
+  
+  
+  
 </ion-content>

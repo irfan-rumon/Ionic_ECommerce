@@ -4,7 +4,8 @@ import { environment } from 'src/environments/environment';
 import { IonModal } from '@ionic/angular';
 import { OverlayEventDetail } from '@ionic/core/components';
 import { ProductApiService } from '../servicesApi/product-api.service';
-import { ActivatedRoute } from '@angular/router';
+import { CartService } from '../servicesApi/cart.service';
+import { AuthorizationService } from '../servicesApi/authorization.service';
 // import { Observable, map, BehaviorSubject} from 'rxjs';
 
 @Component({
@@ -24,7 +25,7 @@ export class HomePage implements OnInit{
   cart:any[] = [];
   message = "hello world";
   name:string;
-  cartCount: number = 0;
+  cartNum: number = 0;
   cls:any = {
     'Smartphone' : false,
     'Perfume' : false,
@@ -34,7 +35,8 @@ export class HomePage implements OnInit{
 
   constructor(private http: HttpClient,
               private productApi: ProductApiService, 
-            
+              private cartApi: CartService,
+              private auth: AuthorizationService
     
     ) {}
 
@@ -64,7 +66,20 @@ export class HomePage implements OnInit{
     this.tempProducts = this.allProducts;
     console.log(this.products);
    });
+
+      this.cartApi.getCartProducts().subscribe( (response:any)=>{
+        let allcarts: any[] = response.data;
+        for(let cp of allcarts){
+            if( cp.userID == this.auth.getUserPayload().sub){
+                this.cartNum += +cp.quantity;
+            }
+        }
+       
+      })   
+
   }
+
+ 
 
 
   onSearch(){
@@ -73,13 +88,6 @@ export class HomePage implements OnInit{
 
 
 
-  addToCart(item:any){
-    if(this.cart.includes(item)){
-      return;
-    }
-    this.cartCount += 1;
-    this.cart.push(item);
-  }
   cancel() {
     this.modal.dismiss(null, 'cancel');
   }
@@ -87,15 +95,7 @@ export class HomePage implements OnInit{
     this.modal.dismiss(this.name, 'confirm');
   }
 
-  changeQuantity(product:any,value:number){
-    product.quantity += value;
-    this.cartCount += value;
-    if(product.quantity === 0){
-      this.cart = this.cart.filter(c => c.id !== product.id);
-      console.log(this.cart);
-      return;
-    }
-  }
+ 
   filter(catagory:string){
     let clsArr = Object.keys(this.cls);
 
