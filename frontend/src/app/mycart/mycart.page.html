@@ -24,7 +24,7 @@
           <div style="margin-left: 3rem;">
             <ion-icon  class="icon-btn" name="close-outline" (click)="deleteCartProduct(cart)" style="margin-left: 4rem; margin-top: 1rem;"></ion-icon>
          
-            <div style="display: flex; margin-top: 2rem; margin-left: 2rem;">
+            <div style="display: flex; margin-top: 2rem; margin-left: 2rem; margin-right: 8px;">
               <ion-icon class="icon-btn" name="remove-circle-outline" (click)="minusQuantity(cart)"></ion-icon>
               <h6 style="font-weight: bold; margin-top: -5px; margin: 0 0.3rem;">{{  cart.quantity }}</h6>
               <ion-icon class="icon-btn" name="add-circle-outline" (click)="addQuantity(cart)"></ion-icon>
@@ -51,7 +51,7 @@
       <div style="margin-left: 11.5rem;">${{ grandTotal  }}</div>
     </ion-item>
 
-    <ion-button style="width: 95%; margin-top:2rem;" [routerLink] = "['/shipping']">
+    <ion-button style="width: 96%; margin-top:2rem; padding: 0 8px;" [routerLink] = "['/shipping']">
          Proceed to Checkout
     </ion-button>
 
