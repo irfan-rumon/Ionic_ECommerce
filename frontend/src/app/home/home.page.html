@@ -5,8 +5,8 @@
     <div class="top-section" style="margin-bottom: 1rem;">
       <div class="search-group">
         <form (ngSubmit)="onSearch()" #searchForm = "ngForm">
-            <input style="padding-left: 2rem; width: 18.5rem;" type="text" [(ngModel)]="searchedProduct" name="searchedProduct" placeholder="Searh product...">
-            <ion-icon name="search"  [routerLink] = "['/search']" [queryParams] = "{'name' : searchedProduct}" (click)="onSearch()"></ion-icon>
+            <input style="padding-left: 3rem; width: 18.5rem;" type="text" [(ngModel)]="searchedProduct" name="searchedProduct" placeholder="Searh product...">
+            <ion-icon name="search" style="margin-left: 0.6rem;" [routerLink] = "['/search']" [queryParams] = "{'name' : searchedProduct}" (click)="onSearch()"></ion-icon>
         </form>
        
       </div>
@@ -16,16 +16,25 @@
   </ion-item>
 
 
-    <div style="margin-bottom: 1rem;">
-      <img src="https://image.shutterstock.com/shutterstock/photos/1934081501/display_1500/stock-photo-weekend-super-sale-shopping-template-1934081501.jpg" alt="">
-    </div>
+  <ion-slides style="margin-bottom: 1rem;">
+    <ion-slide >
+      <img src="https://media.istockphoto.com/vectors/sales-background-template-design-with-flame-hot-sale-sign-vector-id999053624?s=612x612" />  
+    </ion-slide>
 
+    <ion-slide >
+      <img src="https://media.istockphoto.com/photos/3d-illustration-picture-id1286310358?s=612x612"  />  
+    </ion-slide>
+
+
+  </ion-slides>
+    
 
   <ion-item no-padding no-margin>
      <ion-title>Catagories</ion-title>
   </ion-item>
 
   <div class="category" style="margin-top:1rem; padding:0.5rem;">
+    <button class="btn" [ngClass] = "{active: cls['all'] }" (click) = "filter('all')">All</button>
     <button class="btn" [ngClass] = "{active: cls['Smartphone'] }" (click) = "filter('Smartphone')">Phone</button>
     <button class="btn" [ngClass] = "{active: cls['Perfume']}" (click) = "filter('Perfume')">Perfume</button>
     <button class="btn" [ngClass] = "{active: cls['Cloth']}" (click) = "filter('Cloth')">Cloth</button>

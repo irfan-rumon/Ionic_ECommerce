@@ -29,20 +29,6 @@ export class DetailsPage implements OnInit {
     private auth: AuthorizationService) { }
 
   ngOnInit() {
-
-    
-   
-    this.acr.queryParams.subscribe(res => {
-      this.params = res['id'];
-
-      this.prd.getProduct(this.params).subscribe( (response)=>{
-            this.currentProduct = response;
-           
-            this.subtotal = +this.currentProduct.unitPrice * this.quantity;
-           
-      })
-      
-    });
    
   }
 
@@ -90,7 +76,6 @@ export class DetailsPage implements OnInit {
 
   ionViewWillEnter(){
       this.cartNum = 0;
-
       this.cartApi.getCartProducts().subscribe( (allCarts)=>{
         let allCartsArr: any[] = allCarts.data;
         for(let cart of allCartsArr){
@@ -98,6 +83,18 @@ export class DetailsPage implements OnInit {
               this.cartNum += +cart.quantity;
         }
       })
+
+      this.acr.queryParams.subscribe(res => {
+        this.params = res['id'];
+  
+        this.prd.getProduct(this.params).subscribe( (response)=>{
+              this.currentProduct = response;
+             
+              this.subtotal = +this.currentProduct.unitPrice * this.quantity;
+             
+        })
+        
+      });
   }
 
 }

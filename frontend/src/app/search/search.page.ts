@@ -21,6 +21,11 @@ export class SearchPage implements OnInit {
   ) { }
 
   ngOnInit() {
+   
+  }
+
+  ionViewWillEnter(){
+    
     this.acr.queryParams.subscribe(res => {
       this.searchedProduct = res['name'];
       this.searchedProduct = this.searchedProduct.charAt(0).toUpperCase() + this.searchedProduct.slice(1).toLowerCase();

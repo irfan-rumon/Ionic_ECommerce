@@ -29,19 +29,7 @@ export class MycartPage implements OnInit {
   ngOnInit() {
 
 
-    this.cartApi.getCartProducts().subscribe( (response:any)=>{
-        let allcarts: any[] = response.data;
-        for(let cp of allcarts){
-            if( cp.userID == this.auth.getUserPayload().sub){
-                this.cartID = cp._id;
-                this.carts.push(cp);
-                this.total += +cp.subtotal;
-                this.grandTotal += +cp.subtotal;
-                this.cartNum += +cp.quantity;
-            }
-        }
-        console.log(this.carts);
-    })   
+   
 
   }
 
@@ -99,6 +87,25 @@ export class MycartPage implements OnInit {
         return object === cartProduct;
       });  
       this.carts.splice(indexOfObject, 1);//internal array theke delete*/
+  }
+
+  ionViewWillEnter(){
+
+    this.cartNum = 0;
+
+    this.cartApi.getCartProducts().subscribe( (response:any)=>{
+      let allcarts: any[] = response.data;
+      for(let cp of allcarts){
+          if( cp.userID == this.auth.getUserPayload().sub){
+              this.cartID = cp._id;
+              this.carts.push(cp);
+              this.total += +cp.subtotal;
+              this.grandTotal += +cp.subtotal;
+              this.cartNum += +cp.quantity;
+          }
+      }
+      console.log(this.carts);
+  })   
   }
 
  

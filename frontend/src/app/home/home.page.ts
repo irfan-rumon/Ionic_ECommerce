@@ -17,7 +17,7 @@ export class HomePage implements OnInit{
 
   @ViewChild(IonModal) modal: IonModal;
 
-  allProducts:any[]; //mine
+  allProducts:any[] = []; //mine
   smartPhones:any[] = [];
   searchedProduct: string;
   products:any[] = [];
@@ -27,6 +27,7 @@ export class HomePage implements OnInit{
   name:string;
   cartNum: number = 0;
   cls:any = {
+    'all': true,
     'Smartphone' : false,
     'Perfume' : false,
     'Cloth' : false,
@@ -52,10 +53,7 @@ export class HomePage implements OnInit{
 
    this.productApi.getProducts().subscribe(  (response)=>{
        this.allProducts = response.data;
-       for(let pr of this.allProducts){
-          if(pr.catagory == "Smartphone")
-               this.smartPhones.push(pr);
-       }
+       this.tempProducts = response.data;
    })
 
    this.http.get<any[]>(`${environment.baseURL}/products.json`).subscribe(res =>{
@@ -105,7 +103,7 @@ export class HomePage implements OnInit{
             this.cartNum += +cart.quantity;
       }
     })
-}
+  }
 
  
   filter(catagory:string){
@@ -117,6 +115,8 @@ export class HomePage implements OnInit{
     
     this.cls[catagory] = true;
     this.allProducts = this.tempProducts;
+
+    if(catagory == 'all'){this.allProducts = this.tempProducts; return;}
     
     this.allProducts = this.allProducts.filter(prod => prod.catagory === catagory);
   }
