@@ -30,13 +30,7 @@ export class DetailsPage implements OnInit {
 
   ngOnInit() {
 
-    this.cartApi.getCartProducts().subscribe( (allCarts)=>{
-          let allCartsArr: any[] = allCarts.data;
-          for(let cart of allCartsArr){
-            if( cart.userID == this.auth.getUserPayload().sub)
-                this.cartNum += +cart.quantity;
-          }
-        })
+    
    
     this.acr.queryParams.subscribe(res => {
       this.params = res['id'];
@@ -92,6 +86,18 @@ export class DetailsPage implements OnInit {
   onAddQt(){
     this.quantity++;
     this.subtotal = this.quantity * this.currentProduct.unitPrice;
+  }
+
+  ionViewWillEnter(){
+      this.cartNum = 0;
+
+      this.cartApi.getCartProducts().subscribe( (allCarts)=>{
+        let allCartsArr: any[] = allCarts.data;
+        for(let cart of allCartsArr){
+          if( cart.userID == this.auth.getUserPayload().sub)
+              this.cartNum += +cart.quantity;
+        }
+      })
   }
 
 }

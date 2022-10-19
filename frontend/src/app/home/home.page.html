@@ -5,12 +5,13 @@
     <div class="top-section" style="margin-bottom: 1rem;">
       <div class="search-group">
         <form (ngSubmit)="onSearch()" #searchForm = "ngForm">
-            <input style="padding-left: 2rem; width: 19rem;" type="text" [(ngModel)]="searchedProduct" name="searchedProduct" placeholder="Searh product...">
+            <input style="padding-left: 2rem; width: 18.5rem;" type="text" [(ngModel)]="searchedProduct" name="searchedProduct" placeholder="Searh product...">
             <ion-icon name="search"  [routerLink] = "['/search']" [queryParams] = "{'name' : searchedProduct}" (click)="onSearch()"></ion-icon>
         </form>
        
       </div>
-      <ion-icon clss = "notify" name="cart-outline"   [routerLink]="['/mycart']"     style="width: 1.5rem; height: 1.5rem; margin-right: 1rem; margin-left: 0.5rem;"></ion-icon>
+      <ion-icon clss = "notify" name="cart-outline"   [routerLink]="['/mycart']"     style="width: 2rem; height: 2rem; margin-right: 1rem; margin-left: 0.5rem;"></ion-icon>
+      <ion-badge id="cart-badge">{{ cartNum  }}</ion-badge>
     </div>
   </ion-item>
 

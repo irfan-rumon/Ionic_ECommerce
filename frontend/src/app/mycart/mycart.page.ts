@@ -48,7 +48,7 @@ export class MycartPage implements OnInit {
 
 
   goPrevPage(){
-    this.loc.back();
+    this.loc.back(     );
   }
 
   addQuantity(cartProduct:any){

@@ -95,6 +95,18 @@ export class HomePage implements OnInit{
     this.modal.dismiss(this.name, 'confirm');
   }
 
+  ionViewWillEnter(){
+    this.cartNum = 0;
+
+    this.cartApi.getCartProducts().subscribe( (allCarts)=>{
+      let allCartsArr: any[] = allCarts.data;
+      for(let cart of allCartsArr){
+        if( cart.userID == this.auth.getUserPayload().sub)
+            this.cartNum += +cart.quantity;
+      }
+    })
+}
+
  
   filter(catagory:string){
     let clsArr = Object.keys(this.cls);
