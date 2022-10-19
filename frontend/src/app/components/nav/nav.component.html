@@ -1,6 +1,25 @@
 <ion-menu menuId="main-menu" content-id="main">
   <ion-content>
-    <h3 style="font-weight: bold; margin-left:35%; font-style: italic;">Menu</h3>
+    <div class="menu-header-bg">
+
+      <div class="custom-shape-divider-top-1666172824">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+        </svg>
+      </div>
+      
+      <div>
+          <ion-avatar *ngIf = "currentUser.hasOwnProperty('email')"  slot="start">
+            <img alt="Silhouette of a person's head" [src]="currentUser.img" />
+          </ion-avatar>
+          <ion-label>{{ currentUser.name }}</ion-label>
+       
+         <img src=" https://images.unsplash.com/photo-1665691288751-faa9809238e8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80"   (click) = "close()" style="height:7.4rem; width:7.4rem; border-radius: 200px;" [routerLink]="['/profile']">
+         
+
+      </div>
+    </div>
+    
     <ion-list style="margin-top: 1rem;">
       <ion-item>
         <ion-icon name="home-outline" slot="start" style="color:rgb(183, 12, 149)"></ion-icon>
