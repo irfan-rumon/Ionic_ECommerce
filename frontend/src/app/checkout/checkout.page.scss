@@ -71,11 +71,3 @@ ion-content{
     }
 
 }
-@keyframes bottom-to-top {
-    from{
-        transform: translateY(100%);
-    }
-    to{
-        transform: translateY(0%);
-    }
-}
