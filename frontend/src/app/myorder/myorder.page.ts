@@ -36,6 +36,8 @@ export class MyorderPage implements OnInit {
  
 
   ionViewWillEnter(){
+   
+    this.orders.splice(0);
     this.currentUserID = this.auth.getUserPayload().sub;
       
 
@@ -47,7 +49,6 @@ export class MyorderPage implements OnInit {
           }
        }
     })
-  
 
 
   }

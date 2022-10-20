@@ -7,7 +7,7 @@
 
 </div>
 
-<ion-content>
+<ion-content *ngIf="orders.length > 0">
     <ion-card *ngFor="let order of orders" style="flex-direction: column;">
          <div style="display: flex;">
              <h6 style="font-weight: bold; margin-left: 1rem;">Order Date:</h6>
@@ -24,10 +24,14 @@
           <p style="margin-top:1.2rem; margin-left:0.5rem; color: red;">{{order.status}}</p>
          </div>
 
-         <ion-button style="width: 40%; margin-left:5rem; height: 2rem; margin-bottom: 1rem;">
+         <ion-button style="width: 40%; margin-left:5rem; height: 2rem; margin-bottom: 1rem;"  [routerLink] = "['/order-details']" [queryParams] = "{'id' : order._id}">
               View Details
          </ion-button>
 
     </ion-card>
 
+</ion-content>
+
+<ion-content *ngIf="orders.length == 0">
+  <h1 style="text-align: center; margin-top: 4rem; color:rgb(234, 13, 13);">No Cart Items!</h1>
 </ion-content>

@@ -66,6 +66,10 @@ const routes: Routes = [
   {
     path: 'shipping',
     loadChildren: () => import('./shipping/shipping.module').then( m => m.ShippingPageModule)
+  },
+  {
+    path: 'order-details',
+    loadChildren: () => import('./order-details/order-details.module').then( m => m.OrderDetailsPageModule)
   }
 
 ];

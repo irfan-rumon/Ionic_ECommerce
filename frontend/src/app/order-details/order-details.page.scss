@@ -1,0 +1,52 @@
+#bag-icon{
+    width: 2rem;
+    height: 2rem;
+    border: 2px solid black;
+    margin-right: 1rem;
+    border-radius: 4px;
+}
+
+ion-card{
+    display: flex;
+   
+}
+
+.icon-btn{
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+
+
+.d-flx{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+#main-display{
+    overflow-y: auto;
+}
+
+.order-item{
+    margin-top: 1rem;
+   
+    border-radius: 0px;
+    box-shadow: 5px 9px 10px rgb(187, 181, 181);
+    padding: 0.5rem 0;
+    margin-right: 11px;
+    margin-left: 5px;
+    border-top-left-radius: 0;
+}
+
+.ion-card{
+    border-radius: 0px;
+}
+
+#ng-cnt{
+    border-radius: 0px;
+}
+
+#ion-crd{
+    border-radius: 0px;
+}
