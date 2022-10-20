@@ -2,7 +2,7 @@
   <ion-icon name="chevron-back-outline" (click)="goPrevPage()" style="margin-left: 0.5rem; font-size:1.2rem;"></ion-icon>
   <span style="text-align: center; font-size:medium; font-weight: bold;">Shopping Bag</span>
    <ion-icon name="cart-outline" style="width: 1.5rem; height: 1.5rem; margin-right: 1.3rem;"></ion-icon>
-  <ion-badge id="cart-badge">{{ cartNum  }}</ion-badge>
+  <ion-badge *ngIf = "cartNum > 0" id="cart-badge">{{ cartNum  }}</ion-badge>
 </div>
 
 <ion-content *ngIf="carts.length > 0">
@@ -38,7 +38,7 @@
 
      <ion-item class="d-flx" style="margin-top: 2rem; font-weight: 500;">
           <h6>Subtotal</h6>
-          <div style="margin-left: 12rem;">${{ total  }}</div>
+          <div style="margin-left: 12rem;">${{ grandTotal  }}</div>
      </ion-item>
 
      <ion-item class="d-flx" style="font-weight: 500;">
@@ -48,7 +48,7 @@
 
      <ion-item class="d-flx" style="font-weight: 500;">
       <h6>Bag Total</h6>
-      <div style="margin-left: 11.5rem;">${{ grandTotal  }}</div>
+      <div style="margin-left: 11.5rem;">${{ grandTotal+shipping  }}</div>
     </ion-item>
 
     <ion-button style="width: 96%; margin-top:2rem; padding: 0 8px;" [routerLink] = "['/shipping']">

@@ -28,30 +28,41 @@ export class MyorderPage implements OnInit {
   ) { }
 
   ngOnInit() {
-      this.currentUserID = this.auth.getUserPayload().sub;
-      
-      this.OrderProductApi.getOrderProducts().subscribe(  (resOrderProducts:any)=>{
-            let allOrderProducts:any[] = resOrderProducts.data;
-            for(let op of allOrderProducts){
-               if( op.userID == this.currentUserID){
-                  this.orderProducts.push(op);
-               }
-            }  
-            console.log("Length of OrderProducts:  ", this.orderProducts);
-      })
-
-      this.orderApi.getOrders().subscribe(  (resOrders:any)=>{
-         let allOrders:any[] = resOrders.data;
-         for(let order of allOrders){
-            if( order.userID == this.currentUserID){
-              this.orders.push( order );
-            }
-         }
-      })
+   
   }
 
   goPrevPage(){
     this.loc.back();
   }
+
+
+ 
+
+  ionViewWillEnter(){
+    this.currentUserID = this.auth.getUserPayload().sub;
+      
+    this.OrderProductApi.getOrderProducts().subscribe(  (resOrderProducts:any)=>{
+          let allOrderProducts:any[] = resOrderProducts.data;
+          for(let op of allOrderProducts){
+             if( op.userID == this.currentUserID){
+                this.orderProducts.push(op);
+             }
+          }  
+    })
+
+    this.orderApi.getOrders().subscribe(  (resOrders:any)=>{
+       let allOrders:any[] = resOrders.data;
+       for(let order of allOrders){
+          if( order.userID == this.currentUserID){
+            this.orders.push( order );
+          }
+       }
+    })
+  
+
+
+  }
+
+ 
 
 }

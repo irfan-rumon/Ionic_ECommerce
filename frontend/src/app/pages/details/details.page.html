@@ -2,7 +2,7 @@
   <ion-icon name="chevron-back-outline" (click)="goPrevPage()" style="margin-left: 0.5rem; font-size:1.2rem;"></ion-icon>
   <span style="text-align: center; font-size:medium; font-weight: bold;">Product Detail</span>
   <ion-icon name="cart-outline" style="width: 1.5rem; height: 1.5rem; margin-right: 1rem;" [routerLink]="['/mycart']"></ion-icon>
-  <ion-badge id="cart-badge">{{ cartNum  }}</ion-badge>
+  <ion-badge *ngIf = "cartNum > 0" id="cart-badge">{{ cartNum  }}</ion-badge>
 </div>
 
 

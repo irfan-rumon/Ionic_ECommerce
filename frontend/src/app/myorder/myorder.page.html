@@ -10,8 +10,8 @@
 <ion-content>
   <ng-container id="main-display" *ngIf="orderProducts.length > 0">
     <div *ngFor="let order of orders" class="order-item">    
-                    <ng-container *ngFor = "let op of orderProducts">
-                      <ion-card *ngIf = "op.orderID == order._id" style="margin: 0px;">
+                    <ng-container *ngFor = "let op of orderProducts" id="ng-cnt">
+                      <ion-card *ngIf = "op.orderID == order._id" style=" margin: 0;" id="ion-crd">
                         <div  style="margin-top: 1rem;">
                           <img [src]="op.imageURL" style="width: 6rem; height: 6rem; margin-top: -1rem;">
                         </div>
@@ -28,19 +28,19 @@
                             <div style="font-size: 2rem; margin-top: 1rem; margin-right: 1rem;">  {{op.quantity}} </div> 
                         </div>
                     </ion-card>
-
-                    <ion-item class="d-flx" >
-                      <h6>Total:</h6>
-                      <div style="margin-left: 13.5rem;">${{ order.grandTotal  }}</div>
-                  </ion-item>
-
-                  <ion-item class="d-flx">
-                      <h6>Status:</h6>
-                      <div style="margin-left: 12rem; color: red;">Pending</div>
-                  </ion-item>
-
-
                   </ng-container>
+
+                  <ion-item class="d-flx" style="width: 389.2px; margin-top: -10px;">
+                    <h6>Total:</h6>
+                    <div *ngIf="order.grandTotal < 10000"  style="margin-left: 14.3rem;">${{ order.grandTotal  }}</div>
+                    <div *ngIf="order.grandTotal >= 10000"  style="margin-left: 14rem;">${{ order.grandTotal  }}</div>
+                  </ion-item>
+
+                <ion-item class="d-flx" style="width: 389.2px;">
+                    <h6>Status:</h6>
+                    <div style="margin-left: 12.7rem; color: red;">Pending</div>
+                </ion-item>
+
 
                  
     </div>    
@@ -51,6 +51,5 @@
 </ng-container>
 
 </ion-content>
-
 
 

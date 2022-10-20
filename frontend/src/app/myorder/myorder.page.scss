@@ -20,7 +20,6 @@ ion-card{
 
 .d-flx{
     display: flex;
-    width: 23.5rem;
     justify-content: space-between;
 }
 
@@ -31,8 +30,23 @@ ion-card{
 
 .order-item{
     margin-top: 1rem;
-    margin: 0.8rem;
-    border-radius: 10px;
+   
+    border-radius: 0px;
     box-shadow: 5px 9px 10px rgb(187, 181, 181);
-    padding-top: 0.5rem 0;
+    padding: 0.5rem 0;
+    margin-right: 11px;
+    margin-left: 5px;
+    border-top-left-radius: 0;
+}
+
+.ion-card{
+    border-radius: 0px;
+}
+
+#ng-cnt{
+    border-radius: 0px;
+}
+
+#ion-crd{
+    border-radius: 0px;
 }

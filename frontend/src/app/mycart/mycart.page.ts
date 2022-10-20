@@ -28,9 +28,6 @@ export class MycartPage implements OnInit {
 
   ngOnInit() {
 
-
-   
-
   }
 
 
@@ -92,6 +89,10 @@ export class MycartPage implements OnInit {
   ionViewWillEnter(){
 
     this.cartNum = 0;
+    this.carts.splice(0);
+    this.grandTotal = 0;
+    this.shipping = 3;
+    this.total = 0;
 
     this.cartApi.getCartProducts().subscribe( (response:any)=>{
       let allcarts: any[] = response.data;

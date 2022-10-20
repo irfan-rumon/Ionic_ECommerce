@@ -11,7 +11,7 @@
        
       </div>
       <ion-icon clss = "notify" name="cart-outline"   [routerLink]="['/mycart']"     style="width: 2rem; height: 2rem; margin-right: 1rem; margin-left: 0.5rem;"></ion-icon>
-      <ion-badge id="cart-badge">{{ cartNum  }}</ion-badge>
+      <ion-badge *ngIf = "cartNum > 0" id="cart-badge">{{ cartNum  }}</ion-badge>
     </div>
   </ion-item>
 
