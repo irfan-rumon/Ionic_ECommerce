@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 
 const httpOptions = {
@@ -14,10 +15,8 @@ const httpOptions = {
 })
 export class UserApiService {
 
-  private apiUrl = 'http://localhost:3030/users';
-  private loginUrl = 'http://localhost:3030/authentication';
- 
- 
+  private apiUrl = environment.baseApi + ' /users';
+  private loginUrl = environment.baseApi + '/authentication';
 
   constructor(private http: HttpClient) {}
 

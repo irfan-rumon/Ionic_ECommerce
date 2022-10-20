@@ -22,7 +22,7 @@ import { AppRoutingModule } from './app-routing.module';
 @NgModule({
   declarations: [AppComponent,NavComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,HttpClientModule,ReactiveFormsModule,
-    AngularFireModule.initializeApp(environment.firebase),
+  //  AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },ProductService],
   bootstrap: [AppComponent],

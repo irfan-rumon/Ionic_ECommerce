@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 
 const httpOptions = {
@@ -14,7 +15,8 @@ const httpOptions = {
 })
 export class CatagoryApiService {
 
-  private apiUrl = 'http://localhost:3030/catagories';
+  private apiUrl = environment.baseApi + ' /catagories'; 
+
 
   constructor(private http: HttpClient) { }
 
