@@ -14,9 +14,6 @@ export class MyorderPage implements OnInit {
   currentUserID: string;
  
   orders: any[] = [];
-  orderProducts: any[] = [];
-  
-
  
 
   constructor(
@@ -41,14 +38,6 @@ export class MyorderPage implements OnInit {
   ionViewWillEnter(){
     this.currentUserID = this.auth.getUserPayload().sub;
       
-    this.OrderProductApi.getOrderProducts().subscribe(  (resOrderProducts:any)=>{
-          let allOrderProducts:any[] = resOrderProducts.data;
-          for(let op of allOrderProducts){
-             if( op.userID == this.currentUserID){
-                this.orderProducts.push(op);
-             }
-          }  
-    })
 
     this.orderApi.getOrders().subscribe(  (resOrders:any)=>{
        let allOrders:any[] = resOrders.data;
