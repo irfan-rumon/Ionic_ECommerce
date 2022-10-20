@@ -15,7 +15,7 @@ const httpOptions = {
 })
 export class CatagoryApiService {
 
-  private apiUrl = environment.baseApi + ' /catagories'; 
+  private apiUrl = environment.baseApi + '/catagories'; 
 
 
   constructor(private http: HttpClient) { }

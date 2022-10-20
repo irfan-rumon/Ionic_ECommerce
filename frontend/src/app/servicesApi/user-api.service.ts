@@ -15,7 +15,7 @@ const httpOptions = {
 })
 export class UserApiService {
 
-  private apiUrl = environment.baseApi + ' /users';
+  private apiUrl = environment.baseApi + '/users';
   private loginUrl = environment.baseApi + '/authentication';
 
   constructor(private http: HttpClient) {}

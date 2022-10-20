@@ -17,7 +17,7 @@ const httpOptions = {
 })
 export class CartService {
 
-  private apiUrl = environment.baseApi + ' /cart-products'; 
+  private apiUrl = environment.baseApi + '/cart-products'; 
  
   constructor(private http: HttpClient) { }
 

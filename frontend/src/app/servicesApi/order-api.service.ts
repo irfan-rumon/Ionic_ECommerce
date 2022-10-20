@@ -17,7 +17,7 @@ const httpOptions = {
 export class OrderApiService {
 
   //private apiUrl = 'http://localhost:3030/orders';
-  private apiUrl = environment.baseApi + ' /orders'; 
+  private apiUrl = environment.baseApi + '/orders'; 
 
   constructor(private http: HttpClient) {}
 

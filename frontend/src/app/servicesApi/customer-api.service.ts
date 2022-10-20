@@ -18,7 +18,7 @@ const httpOptions = {
 export class CustomerApiService {
 
   //private apiUrl = 'http://localhost:3030/anys';
-  private apiUrl = environment.baseApi + ' /customers'; 
+  private apiUrl = environment.baseApi + '/customers'; 
 
   constructor(private http: HttpClient) { }
 
