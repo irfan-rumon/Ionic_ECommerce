@@ -25,7 +25,18 @@ export class MyorderPage implements OnInit {
   ) { }
 
   ngOnInit() {
-   
+    this.orders.splice(0);
+    this.currentUserID = this.auth.getUserPayload().sub;
+      
+
+    this.orderApi.getOrders().subscribe(  (resOrders:any)=>{
+       let allOrders:any[] = resOrders.data;
+       for(let order of allOrders){
+          if( order.userID == this.currentUserID){
+            this.orders.push( order );
+          }
+       }
+    })
   }
 
   goPrevPage(){

@@ -65,15 +65,7 @@ export class HomePage implements OnInit{
     console.log(this.products);
    });
 
-      this.cartApi.getCartProducts().subscribe( (response:any)=>{
-        let allcarts: any[] = response.data;
-        for(let cp of allcarts){
-            if( cp.userID == this.auth.getUserPayload().sub){
-                this.cartNum += +cp.quantity;
-            }
-        }
-       
-      })   
+     
 
   }
 

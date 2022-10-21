@@ -6,6 +6,7 @@ import { Location } from '@angular/common';
 import { OrderApiService } from '../servicesApi/order-api.service';
 import { OrderProductApiService } from '../servicesApi/order-product-api.service';
 import { AlertController } from '@ionic/angular';
+import { LoggerUser } from '../models/loggerUser';
 
 @Component({
   selector: 'app-checkout',
@@ -16,9 +17,9 @@ export class CheckoutPage implements OnInit {
 
   allCartProducts:any[] = [];
   currentUserID: string;
-  cardName: string;
-  cardNumber: string;
-  cartID: string;
+
+
+  user: LoggerUser = {} as LoggerUser;
 
   constructor(
     private router: Router,

@@ -13,7 +13,7 @@
     <div class="login-section">
         <div class="heading">   
                 <img 
-                  style="margin: 0; width:100%; height: 18rem;"
+                  style="margin: 0; width:100%; height: 10rem;"
                 src="https://img.freepik.com/free-vector/realistic-debit-card-mockup_23-2149241920.jpg?w=740&t=st=1666091881~exp=1666092481~hmac=73c1c52281df261b7ae4bcfa429d57cde9cfa60dd82246a48741abf50bd5d82c">
         </div>
 
@@ -26,8 +26,16 @@
                     <ion-label position="floating">
                         Card Name
                     </ion-label>
-                    <ion-input  placeholder="Enter Card Name" [(ngModel)]="cardName" name="cardName" #email="ngModel"  email="true" required></ion-input>
+                    <ion-input  type="text" placeholder="Enter Card Name"  name="cardName" [(ngModel)]="user.email"  #cName="ngModel"  required></ion-input>
                 </ion-item>
+
+                <div *ngIf="cName.invalid && (cName.dirty || cName.touched)"
+                class="alert">
+
+                                    <div *ngIf="cName.errors?.['required']" style="color:red;margin-bottom: 0.5rem; margin-left: 0.5rem;">
+                                        <p>*Card Name is required.</p>
+                                    </div>
+                  </div>
             </div>
             <div class="form-input">
                
@@ -35,12 +43,25 @@
                     <ion-label position="floating">
                        Card Number
                     </ion-label>
-                    <ion-input type = "number" placeholder="Enter Card Number" [(ngModel)]="cardNumber" name="cardNumber" #password="ngModel"   required></ion-input>
+                    <ion-input type = "number" placeholder="Enter Card Number" [(ngModel)]="user.password" name="cardNumber" #cardNumber="ngModel"   required></ion-input>
                 </ion-item>
+
+                <div *ngIf="cardNumber.invalid && (cardNumber.dirty || cardNumber.touched)"
+                class="alert">
+
+                                    <div *ngIf="cardNumber.errors?.['required']" style="color:red;margin-bottom: 0.5rem; margin-left: 0.5rem;">
+                                        <p>*Card Number is required.</p>
+                                    </div>
+                  </div>
+
+
             </div>
-            <div class="action-button ion-padding">
-                <ion-button type = "submit" [routerLink]="['/order-confirmation']" class="login-button">Confirm Order</ion-button>
-                
+            <div class="action-button ion-padding" style="margin-left: 6rem; width:auto;">
+                <ion-button  *ngIf="logForm.valid" type = "submit" size="large" class="login-button">Submit</ion-button> 
+            </div>
+
+            <div class="action-button ion-padding" style="margin-left: 6rem; width:auto;">
+                <ion-button type = "submit"  *ngIf="!logForm.valid" size="large" [disabled]="true"  class="login-button">Submit</ion-button> 
             </div>
         </form>
 
