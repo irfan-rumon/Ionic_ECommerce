@@ -2,11 +2,10 @@
 
 ion-tab-bar{
     border-top-left-radius: 20px;
-    /* background-color: red; */
     border-top-right-radius: 20px;
     padding: 5px;
     ion-icon{
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
     overflow-y: auto;
     position: relative;
@@ -14,7 +13,7 @@ ion-tab-bar{
         position: absolute;
         transform: translateY(-50%);
         top: -50%;
-        height: 70px;
+        height: 50px;
         opacity: 0;
     }
 }

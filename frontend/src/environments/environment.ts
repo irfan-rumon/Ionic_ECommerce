@@ -3,8 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  baseURL: "http://172.16.204.163:3030",
-  baseApi: 'http://172.16.204.163:3030'
+  baseURL: "https://irfan.loca.lt",
+  baseApi: 'https://irfan.loca.lt'
  
 };
 
