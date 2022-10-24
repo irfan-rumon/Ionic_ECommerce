@@ -43,11 +43,13 @@ export class HomePage implements OnInit{
 
   slideOptions = {
     freeMode: true,
-    centeredSlides: true,
+    //centeredSlides: true,
     loop: true,
-    slidesOffsetBefore: 11,
+    //slidesOffsetBefore: 11,
     spaceBetween: 10,
-    pager: true
+    pager: true,
+    autoplay:true
+
   }
   ngOnInit(){
 
