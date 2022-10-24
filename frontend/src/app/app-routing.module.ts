@@ -55,20 +55,25 @@ const routes: Routes = [
     path: 'myorder',
     canActivate: [UserGuard],
     loadChildren: () => import('./myorder/myorder.module').then( m => m.MyorderPageModule)
-  },  {
+  },
+  {
     path: 'profile',
+    canActivate: [UserGuard],
     loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
   },
   {
     path: 'order-confirmation',
+    canActivate: [UserGuard],
     loadChildren: () => import('./order-confirmation/order-confirmation.module').then( m => m.OrderConfirmationPageModule)
   },
   {
     path: 'shipping',
+    canActivate: [UserGuard],
     loadChildren: () => import('./shipping/shipping.module').then( m => m.ShippingPageModule)
   },
   {
     path: 'order-details',
+    canActivate: [UserGuard],
     loadChildren: () => import('./order-details/order-details.module').then( m => m.OrderDetailsPageModule)
   }
 
