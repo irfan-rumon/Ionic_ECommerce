@@ -1,0 +1,30 @@
+<div style="display: flex; margin-top: 2rem; justify-content: space-between; padding-bottom: 1rem;">
+  <ion-icon name="chevron-back-outline" (click)="goPrevPage()" style="margin-left: 0.6rem;"></ion-icon>
+  <span style="font-size:medium; font-weight: bold; margin-left: -1rem;">Payment</span>
+  <span slot="end" style="margin-top: -12px;">
+   
+   </span>
+</div>
+
+
+<ion-content>
+    <h3 style="font-weight: bold; margin-left:1rem; margin-top:2rem; margin-bottom: 2rem;">Payment Method</h3>
+    
+ 
+              <div class="section">
+                  <img src="https://cdn.pixabay.com/photo/2013/07/18/10/55/dollar-163473_960_720.jpg" style="width: 5rem; ">
+                  <button class="btn" style="margin-top: 1rem;" [routerLink] = "['/order-confirmation']"><span style="font-size: 400;">Cash On Delivery</span></button>
+                 
+              </div>
+          
+          
+              <div class="section">
+                <img src="https://cdn.pixabay.com/photo/2014/10/30/14/14/credit-cards-509330_960_720.png" style="width: 6rem;">
+                <button class="btn" style="margin-left: -0.8rem;" [routerLink] = "['/checkout']"><span  style="font-size: 400;">Credit Card</span> </button>
+              </div>
+
+
+
+    
+
+</ion-content>

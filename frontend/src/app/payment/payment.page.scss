@@ -1,0 +1,27 @@
+.payment-menu{
+  
+   gap: 1rem;
+   margin-left: 1rem;
+}
+
+.menu-item{
+    display: flex;
+    
+  
+    background-color: rgb(234, 200, 159);
+    margin-top: 1rem;
+}
+
+.btn{
+    margin-top: -1rem;
+    padding-left: 0.5rem;
+     border-radius:1rem;
+     width: 14rem;
+    height: 3rem;
+}
+
+.section{
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+}

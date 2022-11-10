@@ -34,7 +34,7 @@ export class ShippingPage implements OnInit {
   }
 
   onCheckout(){
-   this.router.navigate(['/checkout']);
+   this.router.navigate(['/payment']);
   }
 
 }

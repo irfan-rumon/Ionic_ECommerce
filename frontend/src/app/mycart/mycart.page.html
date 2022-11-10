@@ -1,7 +1,7 @@
 <div style="display: flex; margin-top: 2rem; justify-content: space-between;">
   <ion-icon name="chevron-back-outline" (click)="goPrevPage()" style="margin-left: 0.5rem; font-size:1.2rem;"></ion-icon>
   <span style="text-align: center; font-size:medium; font-weight: bold;">Shopping Bag</span>
-   <ion-icon name="cart-outline" style="width: 1.5rem; height: 1.5rem; margin-right: 1.3rem;"></ion-icon>
+      <ion-icon name="cart-outline" style="width: 1.5rem; height: 1.5rem; margin-right: 1.3rem;"></ion-icon>
   <ion-badge *ngIf = "cartNum > 0" id="cart-badge">{{ cartNum  }}</ion-badge>
 </div>
 
@@ -14,21 +14,21 @@
          
 
           <div style="margin-left: 2rem; width: 10rem;" >
-            <h6 style="font-weight: bold;">{{  cart.name }}</h6>
-            <p style="font-size: small;">size: 760fl/225ml</p>
-            <h6 style="font-weight: bold;">${{  cart.subtotal }}</h6>
+              <h6 style="font-weight: bold;">{{  cart.name }}</h6>
+              <p style="font-size: small;">size: 760fl/225ml</p>
+              <h6 style="font-weight: bold;">${{  cart.subtotal }}</h6>
           </div>
 
         
 
           <div style="margin-left: 3rem;">
-            <ion-icon  class="icon-btn" name="close-outline" (click)="deleteCartProduct(cart)" style="margin-left: 4rem; margin-top: 1rem;"></ion-icon>
+              <ion-icon  class="icon-btn" name="close-outline" (click)="deleteCartProduct(cart)" style="margin-left: 4rem; margin-top: 1rem;"></ion-icon>
          
-            <div style="display: flex; margin-top: 2rem; margin-left: 2rem; margin-right: 8px;">
-              <ion-icon class="icon-btn" name="remove-circle-outline" (click)="minusQuantity(cart)"></ion-icon>
-              <h6 style="font-weight: bold; margin-top: -5px; margin: 0 0.3rem;">{{  cart.quantity }}</h6>
-              <ion-icon class="icon-btn" name="add-circle-outline" (click)="addQuantity(cart)"></ion-icon>
-            </div>
+              <div style="display: flex; margin-top: 2rem; margin-left: 2rem; margin-right: 8px;">
+                  <ion-icon class="icon-btn" name="remove-circle-outline" (click)="minusQuantity(cart)"></ion-icon>
+                  <h6 style="font-weight: bold; margin-top: -5px; margin: 0 0.3rem;">{{  cart.quantity }}</h6>
+                  <ion-icon class="icon-btn" name="add-circle-outline" (click)="addQuantity(cart)"></ion-icon>
+              </div>
            
           </div>
 

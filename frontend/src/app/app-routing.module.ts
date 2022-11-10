@@ -75,7 +75,13 @@ const routes: Routes = [
     path: 'order-details',
     canActivate: [UserGuard],
     loadChildren: () => import('./order-details/order-details.module').then( m => m.OrderDetailsPageModule)
+  },
+  {
+    path: 'payment',
+    canActivate: [UserGuard],
+    loadChildren: () => import('./payment/payment.module').then( m => m.PaymentPageModule)
   }
+
 
 ];
 
