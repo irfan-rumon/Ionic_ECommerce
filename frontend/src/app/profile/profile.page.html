@@ -13,7 +13,7 @@
 
     <ion-item>
         <p style="font-weight: bold; margin-right: 1rem;  ">Name: </p>
-        <p>{{ user.fullName }}</p>
+        <p>{{ user.name }}</p>
     </ion-item>
 
     <ion-item>
@@ -22,7 +22,17 @@
     </ion-item>
 
     <ion-item>
-      <p style="font-weight: bold; margin-right: 1rem;  ">Address: </p>
+      <p style="font-weight: bold; margin-right: 1rem; ">District: </p>
+      <p>{{ user.district }}</p>
+    </ion-item>
+
+    <ion-item>
+      <p style="font-weight: bold; margin-right: 1rem; ">Zone: </p>
+      <p>{{ user.zone }}</p>
+    </ion-item>
+
+    <ion-item>
+      <p style="font-weight: bold; margin-right: 1rem;  ">Street Address: </p>
       <p>{{ user.address }}</p>
     </ion-item>
 

@@ -5,7 +5,7 @@
     <div class="top-section" style="margin-bottom: 1rem;">
       <div class="search-group">
         <form (ngSubmit)="onSearch()" #searchForm = "ngForm">
-            <input style="padding-left: 3rem; width: 18.5rem;" type="text" [(ngModel)]="searchedProduct" name="searchedProduct" placeholder="Searh product...">
+            <input style="padding-left: 3rem; width: 20rem;" type="text" [(ngModel)]="searchedProduct" name="searchedProduct" placeholder="Searh product...">
             <ion-icon name="search" style="margin-left: 0.6rem;" [routerLink] = "['/search']" [queryParams] = "{'name' : searchedProduct}" (click)="onSearch()"></ion-icon>
         </form>
        

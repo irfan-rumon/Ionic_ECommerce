@@ -12,38 +12,132 @@
 
 
 
-        <form (ngSubmit)="onCheckout()" #logForm = "ngForm">
-            <div class="form-input">
-               
-                <ion-item >
-                    <ion-label position="floating">
-                       Delivery
-                    </ion-label>
-                    <ion-input  [value]="delivery"  [(ngModel)]="delivery" name="delivery" #email="ngModel"  email="true" required></ion-input>
-                </ion-item>
-            </div>
-            <div class="form-input">
-               
-                <ion-item>
-                    <ion-label position="floating">
-                     City
-                    </ion-label>
-                    <ion-input [value]="city" [(ngModel)]="city" name="city" #password="ngModel"   required></ion-input>
-                </ion-item>
+    <form  (ngSubmit)="onSubmit()"  #regForm = "ngForm">
+        <div class="form-input">
+            <ion-item >
+                <ion-label position="floating">
+                    <h4 style="font-weight: bold; font-size: 1.3rem;">Full Name</h4>
+                </ion-label>
+                <ion-input   placeholder="Enter Name" [(ngModel)]="user.name" name="name" #name="ngModel"   required></ion-input>
+            </ion-item>
+            <div *ngIf="name.invalid && (name.dirty || name.touched)"
+                    class="alert">
 
-                <ion-item>
-                  <ion-label position="floating">
-                 Zipcode
-                  </ion-label>
-                  <ion-input  [value]="zipcode" type = "text" placeholder="Enter Card Number" [(ngModel)]="zipcode" name="zipcode" #password="ngModel"   required></ion-input>
-              </ion-item>
+                <div *ngIf="name.errors?.['required']" style="color:red;margin-bottom: 0.5rem; margin-left: 0.5rem;">
+                    <p>*Full Name is required.</p>
+                </div>
+            </div>
+        </div>
 
+        <div class="form-input">
+            <ion-item>
+                <ion-label position="floating">
+                    <h4 style="font-weight: bold; font-size: 1.3rem;">Email</h4>
+                </ion-label>
+                <ion-input  placeholder="Enter Email" [(ngModel)]="user.email" name="email" #email="ngModel"  email="true" required></ion-input>
+            </ion-item>
+
+            <div *ngIf="email.invalid && (email.dirty || email.touched)"
+                    class="alert">
+
+                <div *ngIf="email.errors?.['required']" style="color:red;margin-bottom: 0.5rem; margin-left: 0.5rem;">
+                    <p>*Email is required.</p>
+                </div>
+
+                <div *ngIf="email.errors?.['email']" style="color:red;margin-bottom: 0.5rem; margin-left: 0.5rem;" >
+                    *Email address is not valid. 
+                </div>
             </div>
-            <div class="action-button ion-padding">
-                <ion-button  type = "submit" class="login-button">Confirm Order</ion-button>
-                
+        </div>
+
+
+        <div class="form-input">
+            <ion-item>
+                <ion-label position="floating">
+                    <h4 style="font-weight: bold; font-size: 1.3rem;">District</h4>
+                </ion-label>
+                <ion-input  placeholder="Enter District" [(ngModel)]="user.district" name="district" #district="ngModel"  required></ion-input>
+            </ion-item>
+
+            <div *ngIf="district.invalid && (district.dirty || district.touched)"
+                    class="alert">
+
+                <div *ngIf="district.errors?.['required']" style="color:red;margin-bottom: 0.5rem; margin-left: 0.5rem;">
+                    <p>*District is required.</p>
+                </div>
             </div>
-        </form>
+        </div>
+
+
+        <div class="form-input">
+            <ion-item>
+                <ion-label position="floating">
+                    <h4 style="font-weight: bold; font-size: 1.3rem;">Zone</h4>
+                </ion-label>
+                <ion-input  placeholder="Enter Zone" [(ngModel)]="user.zone" name="zone" #zone="ngModel"  required></ion-input>
+            </ion-item>
+
+            <div *ngIf="zone.invalid && (zone.dirty || zone.touched)"
+                    class="alert">
+
+                <div *ngIf="zone.errors?.['required']" style="color:red;margin-bottom: 0.5rem; margin-left: 0.5rem;">
+                    <p>*Zone is required.</p>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="form-input">
+            <ion-item>
+                <ion-label position="floating">
+                    <h4 style="font-weight: bold; font-size: 1.3rem;">Contact No.</h4>
+                </ion-label>
+                <ion-input  placeholder="Enter Contact No." [(ngModel)]="user.phone" name="phone" #phone="ngModel"   required></ion-input>
+            </ion-item>
+            <div *ngIf="phone.invalid && (phone.dirty || phone.touched)"
+                    class="alert">
+
+                <div *ngIf="phone.errors?.['required']" style="color:red;margin-bottom: 0.5rem; margin-left: 0.5rem;">
+                    <p>*Contact No. is required.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-input">
+            <ion-item>
+                <ion-label position="floating">
+                    <h4 style="font-weight: bold; font-size: 1.3rem;">Address</h4>
+                </ion-label>
+                <ion-input  placeholder="Enter Address." [(ngModel)]="user.address" name="address" #address="ngModel"   required></ion-input>
+            </ion-item>
+            <div *ngIf="address.invalid && (address.dirty || address.touched)"
+                    class="alert">
+
+                <div *ngIf="address.errors?.['required']" style="color:red;margin-bottom: 0.5rem; margin-left: 0.5rem;">
+                    <p>*Address is required.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="action-button ion-padding" style="margin-left: 6rem; width:auto; height: 2rem;">
+            <ion-button  *ngIf="regForm.valid && user.password == user.passConfirm"    type = "submit"  class="login-button"> Confirm Order </ion-button> 
+        </div>
+
+        <div class="action-button ion-padding" style="margin-left: 6rem; width:auto;">
+            <ion-button type = "submit"  *ngIf="!regForm.valid || !(user.password == user.passConfirm)"  [disabled]="true"  class="login-button">Confirm Order</ion-button> 
+        </div>
+      
+    </form>
 
 
 </ion-content>

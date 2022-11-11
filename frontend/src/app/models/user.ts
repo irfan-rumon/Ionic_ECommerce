@@ -1,9 +1,10 @@
 export interface User{
     _id?:string;
-    userName?: string;
+    name?: string;
     email: string;
-    fullName: string;
     phone: string;
+    district: string;
+    zone: string;
     address: string;
     password:string;
     passConfirm?:string;

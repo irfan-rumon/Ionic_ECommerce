@@ -11,11 +11,13 @@ export default function (app: Application): Model<any> {
   const mongooseClient: Mongoose = app.get('mongooseClient');
   const schema = new mongooseClient.Schema({
   
+    name: { type: String},
     email: { type: String, unique: true, lowercase: true, required:true },
     password: { type: String, required:true },
-    fullName: { type: String},
     phone: { type: String},
     address: { type: String},
+    district: { type: String},
+    zone: { type: String},
     roll: { type: String, default: 'user'},
 
   }, {

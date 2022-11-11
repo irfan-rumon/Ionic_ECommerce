@@ -14,12 +14,12 @@
                     <ion-label position="floating">
                        Full Name
                     </ion-label>
-                    <ion-input  placeholder="Enter Name" [(ngModel)]="user.fullName" name="fullName" #fullName="ngModel"   required></ion-input>
+                    <ion-input  placeholder="Enter Name" [(ngModel)]="user.name" name="name" #name="ngModel"   required></ion-input>
                 </ion-item>
-                <div *ngIf="fullName.invalid && (fullName.dirty || fullName.touched)"
+                <div *ngIf="name.invalid && (name.dirty || name.touched)"
                         class="alert">
 
-                    <div *ngIf="fullName.errors?.['required']" style="color:red;margin-bottom: 0.5rem; margin-left: 0.5rem;">
+                    <div *ngIf="name.errors?.['required']" style="color:red;margin-bottom: 0.5rem; margin-left: 0.5rem;">
                         <p>*Full Name is required.</p>
                     </div>
                 </div>
@@ -45,6 +45,53 @@
                     </div>
                 </div>
             </div>
+
+
+            <div class="form-input">
+                <ion-item>
+                    <ion-label position="floating">
+                        District
+                    </ion-label>
+                    <ion-input  placeholder="Enter District" [(ngModel)]="user.district" name="district" #district="ngModel"  required></ion-input>
+                </ion-item>
+
+                <div *ngIf="district.invalid && (district.dirty || district.touched)"
+                        class="alert">
+
+                    <div *ngIf="district.errors?.['required']" style="color:red;margin-bottom: 0.5rem; margin-left: 0.5rem;">
+                        <p>*District is required.</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-input">
+                <ion-item>
+                    <ion-label position="floating">
+                        Zone
+                    </ion-label>
+                    <ion-input  placeholder="Enter Zone" [(ngModel)]="user.zone" name="zone" #zone="ngModel"  required></ion-input>
+                </ion-item>
+
+                <div *ngIf="zone.invalid && (zone.dirty || zone.touched)"
+                        class="alert">
+
+                    <div *ngIf="zone.errors?.['required']" style="color:red;margin-bottom: 0.5rem; margin-left: 0.5rem;">
+                        <p>*Zone is required.</p>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
 
             <div class="form-input">
                 <ion-item>
