@@ -1,6 +1,6 @@
 
 <div style="display: flex; margin-top: 2rem; justify-content: space-between; padding-bottom: 1rem;">
-  <ion-icon name="chevron-back-outline" (click)="goPrevPage()"></ion-icon>
+  <ion-icon name="chevron-back-outline"  style="margin-left: 0.5rem; font-size:1.2rem;" (click)="goPrevPage()"></ion-icon>
   <span style="text-align: center; font-size:medium; font-weight: bold;">Shipping Address</span>
   <span slot="end" style="margin-top: -12px;">
     <img src="https://images.unsplash.com/photo-1665691288751-faa9809238e8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" style=" height:2.2rem; width:2.2rem; border-radius: 20px; margin-right: 0.5rem;">
@@ -16,7 +16,7 @@
         <div class="form-input">
             <ion-item >
                 <ion-label position="floating">
-                    <h4 style="font-weight: bold; font-size: 1.3rem;">Full Name</h4>
+                    <h4 style="font-weight: bold;  color: rgb(114, 99, 99);">Full Name</h4>
                 </ion-label>
                 <ion-input   placeholder="Enter Name" [(ngModel)]="user.name" name="name" #name="ngModel"   required></ion-input>
             </ion-item>
@@ -32,7 +32,7 @@
         <div class="form-input">
             <ion-item>
                 <ion-label position="floating">
-                    <h4 style="font-weight: bold; font-size: 1.3rem;">Email</h4>
+                    <h4 style="font-weight: bold;  color: rgb(114, 99, 99);">Email</h4>
                 </ion-label>
                 <ion-input  placeholder="Enter Email" [(ngModel)]="user.email" name="email" #email="ngModel"  email="true" required></ion-input>
             </ion-item>
@@ -54,69 +54,47 @@
         <div class="form-input">
             <ion-item>
                 <ion-label position="floating">
-                    <h4 style="font-weight: bold; font-size: 1.3rem;">District</h4>
+                    <h4 style="font-weight: bold; color: rgb(114, 99, 99);"> District</h4>
                 </ion-label>
-                <ion-input  placeholder="Enter District" [(ngModel)]="user.district" name="district" #district="ngModel"  required></ion-input>
+               
+                <ion-select  interface="popover"   >
+                    <ion-select-option value="Dhaka"> Dhaka </ion-select-option>
+                    <ion-select-option value="Chittagong">Chittagong</ion-select-option>
+                    <ion-select-option value="khulna">Khulna</ion-select-option>
+                    <ion-select-option value="Sylhet">Sylhet</ion-select-option>
+                    <ion-select-option value="Rajshahi">Rajshahi</ion-select-option>
+                    <ion-select-option value="Barishal">Barishal</ion-select-option>
+                    <ion-select-option value="Rangpur">Rangpur</ion-select-option>
+                </ion-select>
+            
+            
             </ion-item>
-
-            <div *ngIf="district.invalid && (district.dirty || district.touched)"
-                    class="alert">
-
-                <div *ngIf="district.errors?.['required']" style="color:red;margin-bottom: 0.5rem; margin-left: 0.5rem;">
-                    <p>*District is required.</p>
-                </div>
-            </div>
         </div>
 
 
         <div class="form-input">
             <ion-item>
                 <ion-label position="floating">
-                    <h4 style="font-weight: bold; font-size: 1.3rem;">Zone</h4>
+                    <h4 style="font-weight: bold; color: rgb(114, 99, 99)">Zone</h4>
                 </ion-label>
-                <ion-input  placeholder="Enter Zone" [(ngModel)]="user.zone" name="zone" #zone="ngModel"  required></ion-input>
+                <ion-select    interface="popover" >
+                    <ion-select-option value="Banani">Banani</ion-select-option>
+                    <ion-select-option value="Gulshan">Gulshan</ion-select-option>
+                    <ion-select-option value="Mirpur">Mirpur</ion-select-option>
+                    <ion-select-option value="Borobazar">Borobazar</ion-select-option>
+                    <ion-select-option value="Chockbazar">Chockbazar</ion-select-option>
+                </ion-select>
+
+        
+
             </ion-item>
-
-            <div *ngIf="zone.invalid && (zone.dirty || zone.touched)"
-                    class="alert">
-
-                <div *ngIf="zone.errors?.['required']" style="color:red;margin-bottom: 0.5rem; margin-left: 0.5rem;">
-                    <p>*Zone is required.</p>
-                </div>
-            </div>
         </div>
-
-
-
-
-
-
-
-
-
-
 
 
         <div class="form-input">
             <ion-item>
                 <ion-label position="floating">
-                    <h4 style="font-weight: bold; font-size: 1.3rem;">Contact No.</h4>
-                </ion-label>
-                <ion-input  placeholder="Enter Contact No." [(ngModel)]="user.phone" name="phone" #phone="ngModel"   required></ion-input>
-            </ion-item>
-            <div *ngIf="phone.invalid && (phone.dirty || phone.touched)"
-                    class="alert">
-
-                <div *ngIf="phone.errors?.['required']" style="color:red;margin-bottom: 0.5rem; margin-left: 0.5rem;">
-                    <p>*Contact No. is required.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="form-input">
-            <ion-item>
-                <ion-label position="floating">
-                    <h4 style="font-weight: bold; font-size: 1.3rem;">Address</h4>
+                    <h4 style="font-weight: bold;  color: rgb(114, 99, 99)"> Street Address</h4>
                 </ion-label>
                 <ion-input  placeholder="Enter Address." [(ngModel)]="user.address" name="address" #address="ngModel"   required></ion-input>
             </ion-item>
@@ -129,6 +107,24 @@
             </div>
         </div>
 
+
+
+        <div class="form-input">
+            <ion-item>
+                <ion-label position="floating">
+                    <h4 style="font-weight: bold;  color: rgb(114, 99, 99)">Contact No.</h4>
+                </ion-label>
+                <ion-input  placeholder="Enter Contact No." [(ngModel)]="user.phone" name="phone" #phone="ngModel"   required></ion-input>
+            </ion-item>
+            <div *ngIf="phone.invalid && (phone.dirty || phone.touched)"
+                    class="alert">
+
+                <div *ngIf="phone.errors?.['required']" style="color:red;margin-bottom: 0.5rem; margin-left: 0.5rem;">
+                    <p>*Contact No. is required.</p>
+                </div>
+            </div>
+        </div>
+
         <div class="action-button ion-padding" style="margin-left: 6rem; width:auto; height: 2rem;">
             <ion-button  *ngIf="regForm.valid && user.password == user.passConfirm"    type = "submit"  class="login-button"> Confirm Order </ion-button> 
         </div>
@@ -136,6 +132,8 @@
         <div class="action-button ion-padding" style="margin-left: 6rem; width:auto;">
             <ion-button type = "submit"  *ngIf="!regForm.valid || !(user.password == user.passConfirm)"  [disabled]="true"  class="login-button">Confirm Order</ion-button> 
         </div>
+
+
       
     </form>
 

@@ -20,7 +20,7 @@ export class ShippingPage implements OnInit {
 
   allCartProducts:any[] = [];
   currentUserID: string;
-
+  dist:string;
 
   user: any = {} as any;
 
@@ -39,6 +39,10 @@ export class ShippingPage implements OnInit {
         this.user = user;
      })
      this.currentUserID = this.auth.getToken();
+  }
+
+  showDist(){
+     console.log(this.dist); 
   }
 
   goPrevPage(){

@@ -41,42 +41,42 @@ export class PaymentPage implements OnInit {
 
    onCheckout(){ 
 
-    let order:any = {
-      userID: this.currentUserID
-    }
-    console.log("ASCE.......");
+      let order:any = {
+        userID: this.currentUserID
+      }
+      console.log("ASCE.......");
 
-    this.orderApi.addOrder(order).subscribe( (addedOrder)=>{
-          let tmpTotal:number = 0; let grandTotal: number = 0;
-          this.cartApi.getCartProducts().subscribe( (carts)=>{
-              let allCarts: any[] = carts.data;
-              for(let cart of allCarts){
-                  if( cart.userID == this.currentUserID){
-                      tmpTotal += +cart.subtotal;
-                      grandTotal += +cart.subtotal;
-                      let orderProduct:any = {...cart};
-                      orderProduct.orderID = addedOrder._id;
-                    
-                      this.orderProductApi.addOrderProduct(orderProduct).subscribe( (op:any)=>{
-                             
-                              this.cartApi.deleteCartProduct(cart).subscribe( (response:any)=>{
-                                
-                              })
+      this.orderApi.addOrder(order).subscribe( (addedOrder)=>{
+            let tmpTotal:number = 0; let grandTotal: number = 0;
+            this.cartApi.getCartProducts().subscribe( (carts)=>{
+                let allCarts: any[] = carts.data;
+                for(let cart of allCarts){
+                    if( cart.userID == this.currentUserID){
+                        tmpTotal += +cart.subtotal;
+                        grandTotal += +cart.subtotal;
+                        let orderProduct:any = {...cart};
+                        orderProduct.orderID = addedOrder._id;
+                      
+                        this.orderProductApi.addOrderProduct(orderProduct).subscribe( (op:any)=>{
+                              
+                                this.cartApi.deleteCartProduct(cart).subscribe( (response:any)=>{
+                                  
+                                })
 
-                      })
+                        })
 
-                      let editedOrder: any = {...addedOrder};
-                      editedOrder.total = tmpTotal;
-                      editedOrder.grandTotal = tmpTotal + 3;
-                      editedOrder.shipping = 3;
-                      this.orderApi.editOrder( editedOrder._id, editedOrder).subscribe( (done)=>{
-                        this.router.navigate(['/order-confirmation']);
-                      } );
+                        let editedOrder: any = {...addedOrder};
+                        editedOrder.total = tmpTotal;
+                        editedOrder.grandTotal = tmpTotal + 3;
+                        editedOrder.shipping = 3;
+                        this.orderApi.editOrder( editedOrder._id, editedOrder).subscribe( (done)=>{
+                          this.router.navigate(['/order-confirmation']);
+                        } );
 
-                  }
-              }
-          })
-    })
+                    }
+                }
+            })
+      })
   }
 
 }
