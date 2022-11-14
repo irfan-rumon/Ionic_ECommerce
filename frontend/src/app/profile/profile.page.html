@@ -1,10 +1,11 @@
+
 <div style="display: flex; margin-top: 2rem; margin-bottom: 1rem;">
   <ion-icon name="chevron-back-outline" (click)="goPrevPage()" style="margin-left: 0.5rem; font-size:1.2rem;"></ion-icon>
   <span style="text-align: center; font-weight: bold; margin-left: 35%; ">My Profile</span>
  
 </div>
 
-<ion-content>
+<ion-content *ngIf="isLogged">
 
   <ion-card>
     <div style="margin-top: 1rem;">
@@ -32,7 +33,7 @@
     </ion-item>
 
     <ion-item>
-      <p style="font-weight: bold; margin-right: 1rem;  ">Street Address: </p>
+      <p style="font-weight: bold; margin-right: 1rem;  ">Address: </p>
       <p>{{ user.address }}</p>
     </ion-item>
 
@@ -51,3 +52,4 @@
 
 
 </ion-content>
+

@@ -11,13 +11,15 @@ import { AuthorizationService } from 'src/app/servicesApi/authorization.service'
 export class NavComponent implements OnInit {
 
   currentUser:any = {};
+  isLogged:boolean;
 
   constructor(private auth: AuthorizationService ,
     private router:Router,
     private menu: MenuController) { }
 
   ngOnInit() {
-    
+      if( this.auth.isLoggedIn())this.isLogged = true;
+      else this.isLogged = false;
   }
 
   logout(){

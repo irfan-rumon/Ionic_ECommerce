@@ -5,21 +5,21 @@ import { UserGuard } from './guards/user.guard';
 const routes: Routes = [
   {
     path: 'home',
-    canActivate: [UserGuard],
-    //loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-    children: [
-      { path: '', loadChildren: () => import('./home/home.module').then(m => m.HomePageModule) },
+   // canActivate: [UserGuard],
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),
+   /* children: [
+      { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomePageModule) },
       
       {
         path: 'signup',
         loadChildren: () => import('./pages/signup/signup.module').then(m => m.SignupPageModule)
 
       }
-    ]
+    ]*/
   },
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   
@@ -33,52 +33,52 @@ const routes: Routes = [
   },
   {
     path: 'details',
-    canActivate: [UserGuard],
+   // canActivate: [UserGuard],
     loadChildren: () => import('./pages/details/details.module').then( m => m.DetailsPageModule)
   },
   {
     path: 'search',
-    canActivate: [UserGuard],
+   // canActivate: [UserGuard],
     loadChildren: () => import('./search/search.module').then( m => m.SearchPageModule)
   },
   {
     path: 'mycart',
-    canActivate: [UserGuard],
+   // canActivate: [UserGuard],
     loadChildren: () => import('./mycart/mycart.module').then( m => m.MycartPageModule)
   },
   {
     path: 'checkout',
-    canActivate: [UserGuard],
+   // canActivate: [UserGuard],
     loadChildren: () => import('./checkout/checkout.module').then( m => m.CheckoutPageModule)
   },
   {
     path: 'myorder',
-    canActivate: [UserGuard],
+    //canActivate: [UserGuard],
     loadChildren: () => import('./myorder/myorder.module').then( m => m.MyorderPageModule)
   },
   {
     path: 'profile',
-    canActivate: [UserGuard],
+    //canActivate: [UserGuard],
     loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
   },
   {
     path: 'order-confirmation',
-    canActivate: [UserGuard],
+    //canActivate: [UserGuard],
     loadChildren: () => import('./order-confirmation/order-confirmation.module').then( m => m.OrderConfirmationPageModule)
   },
   {
     path: 'shipping',
-    canActivate: [UserGuard],
+    //canActivate: [UserGuard],
     loadChildren: () => import('./shipping/shipping.module').then( m => m.ShippingPageModule)
   },
   {
     path: 'order-details',
-    canActivate: [UserGuard],
+   // canActivate: [UserGuard],
     loadChildren: () => import('./order-details/order-details.module').then( m => m.OrderDetailsPageModule)
   },
   {
     path: 'payment',
-    canActivate: [UserGuard],
+   // canActivate: [UserGuard],
     loadChildren: () => import('./payment/payment.module').then( m => m.PaymentPageModule)
   }
 

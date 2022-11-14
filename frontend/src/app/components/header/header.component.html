@@ -6,9 +6,9 @@
       </ion-title>
       <!-- <ion-button class="menu-btn" slot="start"> -->
         <ion-menu-button color = "light" slot = "start" menu="main-menu"></ion-menu-button>
-      <span style="font-style: italic; color:white; font-weight: bold; margin-left:5rem;">NISHO STORE</span>
-       <span slot="end">
-        <img src="https://images.unsplash.com/photo-1665691288751-faa9809238e8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" style=" height:2.2rem; width:2.2rem; border-radius: 20px;"  [routerLink]="['/profile']">
+      <span style="font-style: italic; color:white; font-weight: bold; margin-left:6rem;">BetterMart</span>
+       <span  *ngIf="isLogged"                slot="end" style="margin-right: 0.5rem;">
+          <img src="https://images.unsplash.com/photo-1665691288751-faa9809238e8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" style=" height:2.2rem; width:2.2rem; border-radius: 20px;"  [routerLink]="['/profile']">
        </span>
        <!-- </ion-button> -->
     </ion-toolbar>

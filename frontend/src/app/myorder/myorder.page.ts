@@ -12,6 +12,7 @@ import { Location } from '@angular/common';
 export class MyorderPage implements OnInit {
 
   currentUserID: string;
+  isLogged: boolean;
  
   orders: any[] = [];
  
@@ -25,6 +26,9 @@ export class MyorderPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    if( this.auth.isLoggedIn() )this.isLogged = true;
+    else this.isLogged = false;
+    
     this.orders.splice(0);
     this.currentUserID = this.auth.getUserPayload().sub;
       
